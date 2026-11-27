@@ -629,6 +629,65 @@ button.backlink{font-family:var(--f-ui); font-size:13.5px; font-weight:600;}
 .terms-box{border:1px solid var(--line); border-radius:var(--radius); padding:10px 12px; background:var(--panel-raised);}
 .terms-box summary{cursor:pointer; font-family:var(--f-display); font-size:16px; font-weight:600; letter-spacing:.03em; color:var(--copper-bright);}
 .terms-grid{display:grid; gap:12px; margin-top:12px;}
+/* ===== v2: coordinator console, charts, delivery ===== */
+.co-bar{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:16px;}
+.co-ranges{display:flex; gap:12px; flex-wrap:wrap; align-items:center;}
+.co-ranges nav.tabs{margin:0;}
+.co-ranges .dt, .chk{display:inline-flex; gap:8px; align-items:center; font-size:13px; color:var(--paper-dim);}
+.co-ranges .dt input{background:var(--field-bg); color:var(--paper); border:1px solid var(--line); border-radius:6px; padding:6px 8px; font:inherit;}
+label.chk{color:var(--paper); cursor:pointer;} label.chk input{width:16px; height:16px; accent-color:var(--copper);}
+.co-h{margin:22px 0 10px; font-family:var(--f-display); font-size:17px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--paper-dim);}
+.kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:6px;}
+.kpi{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; display:grid; gap:3px; align-content:start;}
+.kpi .kl{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--paper-dim);}
+.kpi .kv{font-family:var(--f-display); font-size:32px; font-weight:700; line-height:1.1; color:var(--paper);}
+.kpi .ks{font-size:12px; color:var(--paper-dim); overflow-wrap:anywhere;}
+.kpi.warn{box-shadow:inset 3px 0 0 var(--caution);} .kpi.alert{box-shadow:inset 3px 0 0 var(--danger);} .kpi.alert .kv{color:var(--danger-fg);}
+:root[data-theme="light"] .kpi{box-shadow:0 1px 2px rgba(20,34,90,0.08);}
+:root[data-theme="light"] .kpi.warn{box-shadow:inset 3px 0 0 var(--caution),0 1px 2px rgba(20,34,90,0.08);} :root[data-theme="light"] .kpi.alert{box-shadow:inset 3px 0 0 var(--danger),0 1px 2px rgba(20,34,90,0.08);}
+.viz-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,560px),1fr)); gap:18px; margin-top:22px;}
+.co-two{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr)); gap:18px; margin-top:18px; align-items:start;}
+.viz{--s1:#338ced; --s2:#e76624; --s3:#00a888;}
+:root[data-theme="light"] .viz{--s1:#257de0; --s2:#f47230; --s3:#00b894;}
+.legend{display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--paper);}
+.legend i{display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px;}
+.viz-svg{width:100%; height:auto; display:block; overflow:visible;}
+.viz-svg text{fill:var(--paper-dim); font-size:11px; font-family:var(--f-ui);}
+.viz-svg text.dl{fill:var(--paper); font-size:12px;} .viz-svg text.vl{fill:var(--paper); font-size:11.5px; font-weight:600;}
+.viz-svg .gl{stroke:var(--line); stroke-width:1;}
+.viz-svg .hit{fill:transparent; cursor:crosshair;}
+.viz-svg .xh{visibility:hidden; pointer-events:none;} .viz-svg .col:hover .xh{visibility:visible;}
+.viz-svg .xh line{stroke:var(--paper-dim); stroke-width:1; stroke-dasharray:3 3;} .viz-svg .xh circle{stroke:var(--panel); stroke-width:2;}
+.viz-svg .col:hover .bar{filter:brightness(1.18);}
+.hbars{display:grid; gap:2px;}
+.hbar{display:grid; grid-template-columns:minmax(96px,34%) 1fr 64px; gap:10px; align-items:center; padding:5px 4px; border-radius:6px; font-size:13px;}
+.hbar:hover{background:rgba(var(--accent-rgb),0.08);}
+.hbar .hl{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--paper);}
+.hbar .hm{height:16px; border-left:1px solid var(--line); display:block;}
+.hbar .hf{display:block; height:100%; background:var(--s1); border-radius:0 4px 4px 0;}
+.hbar.strong .hf{background:var(--s2);}
+.hbar .hv{text-align:right; font-variant-numeric:tabular-nums; color:var(--paper); font-weight:600;}
+.sw{display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:6px;}
+#viz-tip{position:fixed; z-index:200; display:none; pointer-events:none; background:var(--panel-raised); color:var(--paper); border:1px solid var(--line); border-radius:8px; padding:8px 11px; font-size:12.5px; line-height:1.5; box-shadow:0 8px 24px rgba(0,0,0,.35); max-width:280px;}
+table.twin{font-size:13px;} table.twin th.r, table.twin td.r, .console-card td.r, .console-card th.r{text-align:right; font-variant-numeric:tabular-nums;}
+.console-card td{font-size:13px;} .console-card .hint-text{margin-top:2px;}
+.tablewrap{overflow-x:auto;}
+table.staff td{vertical-align:middle;} table.staff tr.off td{opacity:.55;} table.staff td.acts{white-space:nowrap;}
+.staff-form{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px;}
+.staff-edit{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; align-items:end; padding:6px 0;}
+.creds pre{background:var(--field-bg); border:1px solid var(--line); border-radius:8px; padding:12px 14px; font-size:13px; white-space:pre-wrap; overflow-wrap:anywhere; margin:10px 0; color:var(--paper);}
+.health{display:flex; gap:28px; flex-wrap:wrap; background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px;}
+.disp-detail{display:grid; gap:8px; padding:8px 0; font-size:12.5px;} .alertline{color:var(--danger-fg); font-size:12px; margin-top:2px;}
+details summary{cursor:pointer; color:var(--copper-bright); font-size:12.5px;}
+.mailprev{background:#fff; color:#111; border-radius:8px; padding:16px 18px; font:14px/1.5 Arial,Helvetica,sans-serif; border:1px solid var(--line);}
+.mailprev p{margin:0 0 10px;} .mailprev .sig{margin-top:14px;} .mailprev .sig small{font-size:12px; line-height:1.55; display:block;}
+.mailprev .attach{display:inline-block; margin-top:10px; padding:6px 10px; border:1px solid #ccd; border-radius:6px; font-size:12.5px; background:#f6f7fb;}
+.deliv-box{border-top:1px solid var(--line); padding-top:12px; display:grid; gap:10px;}
+.deliv-line{display:grid; gap:2px;} a.linkbtn{display:inline-block; text-decoration:none; line-height:1.2;}
+
+.console-card td.r, .console-card td:first-child{white-space:nowrap;}
+.console-card td:first-child .hint-text{white-space:normal;}
+
 </style>
 <script>
 (function(){try{var t=localStorage.getItem('esl-theme');if(t!=='light'&&t!=='dark'){t='dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();
@@ -745,6 +804,7 @@ button.backlink{font-family:var(--f-ui); font-size:13.5px; font-weight:600;}
         <button type="button" class="portfolio-opt" role="radio" aria-checked="false" data-portfolio="admin"><b>ESL admin</b><span>Call routing &amp; front desk</span></button>
         <button type="button" class="portfolio-opt" role="radio" aria-checked="false" data-portfolio="sales"><b>Sales person</b><span>Client requests, JCFs &amp; waybills</span></button>
         <button type="button" class="portfolio-opt" role="radio" aria-checked="false" data-portfolio="designer"><b>Designer / Production engineer</b><span>Drawings, progress, photos &amp; ETA</span></button>
+        <button type="button" class="portfolio-opt" role="radio" aria-checked="false" data-portfolio="coordinator" style="grid-column:1/-1;"><b>Coordinator</b><span>Staff accounts, business insights &amp; settings</span></button>
       </div>
       <div id="staff-creds" style="display:grid; gap:16px;">
         <div class="field"><label class="flabel" for="staff-email">Staff email</label><input type="email" id="staff-email" autocomplete="username"></div>
@@ -802,6 +862,7 @@ button.backlink{font-family:var(--f-ui); font-size:13.5px; font-weight:600;}
           <div class="field"><label class="flabel">Company / organisation</label><input type="text" id="f-company" placeholder="e.g. Goldstar Fuels Ltd"></div>
           <div class="field"><label class="flabel">Phone number *</label><input type="text" id="f-phone" placeholder="+233 __ ___ ____"></div>
           <div class="field"><label class="flabel">Email address *</label><input type="email" id="f-email" placeholder="name@company.com"></div>
+          <div class="field" style="grid-column:1/-1;"><label class="flabel">Copy others on the quotation (optional)</label><input type="text" id="f-cc" placeholder="colleague@company.com, procurement@company.com"><div class="hint-text">Anyone listed here receives the quotation e-mail together with you.</div></div>
         </div>
       </section>
       <section class="qgroup">
@@ -963,6 +1024,20 @@ button.backlink{font-family:var(--f-ui); font-size:13.5px; font-weight:600;}
     <div id="est-detail-view" style="display:none;"></div>
   </div>
 
+<div id="view-coordinator" class="view">
+    <div class="intro-card">
+      <h2>Coordinator console</h2>
+      <p>Create and manage TAGG staff logins, watch the whole panel business at a glance, and control how quotations reach clients.</p>
+    </div>
+    <nav class="tabs" id="co-tabs" style="margin-bottom:18px;">
+      <button data-t="insights" class="active">Insights</button>
+      <button data-t="staff">Staff accounts</button>
+      <button data-t="delivery">Quotation delivery</button>
+      <button data-t="settings">Settings</button>
+    </nav>
+    <div id="co-body"></div>
+  </div>
+
 <footer class="site-foot">
     <div style="display:flex; align-items:center; gap:14px;">
       <img class="logo-for-dark" data-asset="logo_light" alt=""><img class="logo-for-light" data-asset="logo_dark" alt="">
@@ -1082,11 +1157,15 @@ const PANELS = {
   }
 };
 
-const ESTIMATORS = [
-  {id:'stephen', name:'Stephen Larbi', specialty:'ATS / Power Panels', status:'On call'},
-  {id:'fasante', name:'F. Asante', specialty:'PLC / SCADA', status:'Available'},
-  {id:'rnkrumah', name:'R. Nkrumah', specialty:'MCC / Motor', status:'Busy'},
-  {id:'sboateng', name:'S. Boateng', specialty:'PFC / Metering', status:'Available'},
+const DEMO_STAFF_SEED = [
+  {id:'demo-stephen', name:'Stephen Larbi', role:'estimator', estimatorId:'stephen', specialty:'ATS / Power Panels', phone:'+233542895282', email:'stephen@automationghana.com', active:true},
+  {id:'demo-fasante', name:'F. Asante', role:'estimator', estimatorId:'fasante', specialty:'PLC / SCADA', phone:'+233244000111', email:'f.asante@automationghana.com', active:true},
+  {id:'demo-rnkrumah', name:'R. Nkrumah', role:'estimator', estimatorId:'rnkrumah', specialty:'MCC / Motor', phone:'+233244000222', email:'r.nkrumah@automationghana.com', active:true},
+  {id:'demo-sboateng', name:'S. Boateng', role:'estimator', estimatorId:'sboateng', specialty:'PFC / Metering', phone:'+233244000333', email:'s.boateng@automationghana.com', active:true},
+  {id:'demo-admin', name:'Ama B. (Front Desk)', role:'admin', estimatorId:null, specialty:'', phone:'', email:'ama@automationghana.com', active:true},
+  {id:'demo-sales', name:'Akosua Boateng', role:'sales', estimatorId:null, specialty:'', phone:'', email:'akosua@automationghana.com', active:true},
+  {id:'demo-designer', name:'Kojo Annan', role:'designer', estimatorId:null, specialty:'', phone:'', email:'kojo@automationghana.com', active:true},
+  {id:'demo-coord', name:'Efua Mensah', role:'coordinator', estimatorId:null, specialty:'', phone:'', email:'efua@automationghana.com', active:true},
 ];
 
 const STATUS_STAGES = ['Case Received','Under Estimator Review','Quotation Issued','Client Acceptance','In Production','Delivered & Closed'];
@@ -1138,6 +1217,7 @@ function friendlyError(e){
     'PGRST301':'Your session has expired — please sign in again.',
   };
   if(map[code]) return map[code];
+  if(/banned/i.test(msg)) return 'This account has been deactivated. Please contact the TAGG coordinator.';
   if(/invalid login credentials/i.test(msg)) return map.invalid_credentials;
   if(/already registered/i.test(msg)) return map.user_already_exists;
   if(/failed to fetch|networkerror|load failed/i.test(msg)) return 'Network problem — check your connection.';
@@ -1163,8 +1243,8 @@ let callLog = [];
 let unsubs = [];
 let authError = null;    // { page: 'client' | 'staff', msg }
 
-const ROLE_LABEL = { client:'Client', estimator:'Estimator', admin:'ESL admin', sales:'Sales person', designer:'Designer / Production engineer' };
-const STAFF_ROLES = ['estimator', 'admin', 'sales', 'designer'];
+const ROLE_LABEL = { client:'Client', estimator:'Estimator', admin:'ESL admin', sales:'Sales person', designer:'Designer / Production engineer', coordinator:'Coordinator' };
+const STAFF_ROLES = ['estimator', 'admin', 'sales', 'designer', 'coordinator'];
 const KIND_LABEL = { diagram:'Single-line diagram', quotation:'Quotation document', drawing:'Preliminary drawing', photo:'Status picture', jcf:'Job completion form', waybill:'Waybill' };
 
 const state = {
@@ -1185,6 +1265,859 @@ function entry(text, extra){
 }
 
 /* ---------------------------------------------------------------
+   COORDINATOR INSIGHTS — pure functions (no page access), so the numbers can be tested on their own
+--------------------------------------------------------------- */
+const DAY = 24 * HOUR;
+const DONE_STAGE = 'Delivered & Closed';
+const caseValue = c => {      // value of an order excluding NHIL / GETFund / VAT, so every figure is comparable
+  const amt = Number(c.acceptedAmount != null ? c.acceptedAmount : c.quoteAmount) || 0;
+  const incl = !!(c.quoteTerms && c.quoteTerms.taxIncl);
+  return incl ? r2(amt / (1 + TAX.nhil + TAX.getfund + TAX.vat)) : amt;
+};
+const lastActivityOf = c => {
+  let t = c.createdAtMs || 0;
+  if(c.updatedAt > t) t = c.updatedAt;
+  (c.timeline || []).forEach(a => { if(a.t > t) t = a.t; });
+  return t;
+};
+const quoteTimes = c => (c.quoteHistory || []).map(q => q.t).filter(Boolean).sort((a, b) => a - b);
+const median = a => { if(!a.length) return null; const s = a.slice().sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+const sumBy = (list, f) => list.reduce((n, x) => n + f(x), 0);
+
+function insightBuckets(from, to){
+  const span = (to - from) / DAY, out = [];
+  const mk = (start, end, label) => out.push({ start, end, label });
+  if(span <= 14){
+    for(let t = new Date(from).setHours(0, 0, 0, 0); t < to; t += DAY) mk(t, t + DAY, new Date(t).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }));
+  } else if(span <= 100){
+    const n = Math.ceil(span / 7);
+    for(let i = 0; i < n; i++){ const end = to - (n - 1 - i) * 7 * DAY, start = end - 7 * DAY; mk(start, end, new Date(start).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })); }
+  } else {
+    const d0 = new Date(from); let y = d0.getFullYear(), m = d0.getMonth();
+    const last = new Date(to); const ly = last.getFullYear(), lm = last.getMonth();
+    while(y < ly || (y === ly && m <= lm)){
+      mk(new Date(y, m, 1).getTime(), new Date(y, m + 1, 1).getTime(), new Date(y, m, 1).toLocaleDateString('en-GB', { month: 'short', year: '2-digit' }));
+      m++; if(m > 11){ m = 0; y++; }
+    }
+    while(out.length > 24) out.shift();
+  }
+  return out;
+}
+
+function computeInsights(cases, events, o){
+  const now = o.now, dormantMs = (o.dormantDays || 7) * DAY;
+  let from = o.from, to = o.to || now;
+  if(from == null){ from = cases.reduce((m, c) => Math.min(m, c.createdAtMs || now), now); from = Math.min(from, now - 30 * DAY); }
+  const inWin = t => t != null && t >= from && t <= to;
+  const evBy = new Map();
+  (events || []).forEach(e => { if(!evBy.has(e.caseNo)) evBy.set(e.caseNo, []); evBy.get(e.caseNo).push(e); });
+  evBy.forEach(l => l.sort((a, b) => a.t - b.t));
+  const stageT = (no, stage) => { const e = (evBy.get(no) || []).find(x => x.kind === 'stage' && x.stage === stage); return e ? e.t : null; };
+  const deliveredT = c => c.status !== DONE_STAGE ? null : (stageT(c.caseNo, DONE_STAGE) || c.updatedAt || lastActivityOf(c));
+  const isOpen = c => c.status !== DONE_STAGE;
+
+  // ---- where everything stands right now
+  const stages = STATUS_STAGES.map(s => { const l = cases.filter(c => c.status === s); return { stage: s, count: l.length, value: sumBy(l, caseValue) }; });
+  const by = s => cases.filter(c => c.status === s);
+  const prod = by('In Production'), await_ = by('Quotation Issued'), accNotStarted = by('Client Acceptance');
+  const waitQuote = cases.filter(c => c.status === 'Case Received' || c.status === 'Under Estimator Review');
+  const lastQuoteT = c => { const q = quoteTimes(c); return q.length ? q[q.length - 1] : (c.createdAtMs || now); };
+  const dormantAll = cases.filter(c => isOpen(c) && now - lastActivityOf(c) > dormantMs)
+    .map(c => ({ caseNo: c.caseNo, name: (c.contact && (c.contact.company || c.contact.fullName)) || '', panel: c.panelName || '', stage: c.status,
+                 idleDays: Math.floor((now - lastActivityOf(c)) / DAY), value: caseValue(c), est: c.assignedEstimatorId || null }))
+    .sort((a, b) => b.idleDays - a.idleDays);
+  const awaitingList = await_.map(c => ({ caseNo: c.caseNo, name: (c.contact && (c.contact.company || c.contact.fullName)) || '', panel: c.panelName || '',
+      ageDays: Math.floor((now - lastQuoteT(c)) / DAY), value: caseValue(c), est: c.assignedEstimatorId || null })).sort((a, b) => b.ageDays - a.ageDays);
+  const ageBuckets = [['Up to 7 days', 0, 7], ['8–14 days', 8, 14], ['15–30 days', 15, 30], ['Over 30 days', 31, 1e9]]
+    .map(([label, lo, hi]) => { const l = awaitingList.filter(a => a.ageDays >= lo && a.ageDays <= hi); return { label, n: l.length, value: sumBy(l, a => a.value) }; });
+
+  // ---- what happened in the chosen period
+  const created = cases.filter(c => inWin(c.createdAtMs));
+  const firstQuoted = cases.filter(c => { const q = quoteTimes(c); return q.length && inWin(q[0]); });
+  const revisions = sumBy(cases, c => quoteTimes(c).slice(1).filter(inWin).length);
+  const accepted = cases.filter(c => inWin(c.acceptedAt));
+  const delivered = cases.filter(c => inWin(deliveredT(c)));
+  const wonOfQuoted = firstQuoted.filter(c => c.acceptedAt != null).length;
+  const tQuote = firstQuoted.map(c => (quoteTimes(c)[0] - c.createdAtMs) / HOUR).filter(h => h >= 0);
+  const tDecide = accepted.filter(c => quoteTimes(c).length).map(c => (c.acceptedAt - quoteTimes(c)[0]) / DAY).filter(d => d >= 0);
+  const tBuild = delivered.filter(c => c.acceptedAt).map(c => (deliveredT(c) - c.acceptedAt) / DAY).filter(d => d >= 0);
+
+  // ---- trend buckets
+  const buckets = insightBuckets(from, to);
+  const at = t => buckets.findIndex(b => t >= b.start && t < b.end);
+  const zero = () => buckets.map(() => 0);
+  const series = { requests: zero(), quotes: zero(), accepted: zero(), delivered: zero(), deliveredValue: zero(), acceptedValue: zero() };
+  const bump = (arr, t, v) => { const i = at(t); if(i > -1) arr[i] += v; };
+  created.forEach(c => bump(series.requests, c.createdAtMs, 1));
+  firstQuoted.forEach(c => bump(series.quotes, quoteTimes(c)[0], 1));
+  accepted.forEach(c => { bump(series.accepted, c.acceptedAt, 1); bump(series.acceptedValue, c.acceptedAt, caseValue(c)); });
+  delivered.forEach(c => { bump(series.delivered, deliveredT(c), 1); bump(series.deliveredValue, deliveredT(c), caseValue(c)); });
+
+  // ---- demand by panel family, time in each stage, ageing, people
+  const pm = new Map();
+  created.forEach(c => { const k = c.panelName || 'Other'; const r = pm.get(k) || { name: k, n: 0, value: 0 }; r.n++; r.value += caseValue(c); pm.set(k, r); });
+  let panels = [...pm.values()].sort((a, b) => b.n - a.n || b.value - a.value);
+  if(panels.length > 8){ const rest = panels.slice(7); panels = panels.slice(0, 7).concat([{ name: 'Other families', n: sumBy(rest, r => r.n), value: sumBy(rest, r => r.value) }]); }
+
+  const dur = new Map(STATUS_STAGES.slice(0, -1).map(s => [s, []]));
+  cases.forEach(c => {
+    const ev = evBy.get(c.caseNo); if(!ev) return;
+    const seq = [{ stage: 'Case Received', t: c.createdAtMs }].concat(ev.filter(e => e.kind === 'stage').map(e => ({ stage: e.stage, t: e.t })));
+    seq.forEach((s, i) => {
+      if(!dur.has(s.stage) || !inWin(s.t)) return;
+      const end = i + 1 < seq.length ? seq[i + 1].t : (isOpen(c) ? now : null);
+      if(end != null && end >= s.t) dur.get(s.stage).push((end - s.t) / DAY);
+    });
+  });
+  const stageDays = [...dur.entries()].map(([stage, l]) => ({ stage, n: l.length, avgDays: l.length ? sumBy(l, x => x) / l.length : null }));
+
+  const ests = (o.estimators || []).map(e => {
+    const mine = cases.filter(c => c.assignedEstimatorId === e.id);
+    const q = mine.filter(c => { const t = quoteTimes(c); return t.length && inWin(t[0]); });
+    const hrs = q.map(c => (quoteTimes(c)[0] - c.createdAtMs) / HOUR).filter(h => h >= 0);
+    return { id: e.id, name: e.name, open: mine.filter(isOpen).length, quoted: q.length, medianQuoteHrs: median(hrs),
+             won: q.filter(c => c.acceptedAt != null).length, value: sumBy(mine.filter(c => inWin(c.acceptedAt)), caseValue) };
+  }).filter(e => e.open || e.quoted || e.value);
+
+  const cm = new Map();
+  accepted.forEach(c => { const k = (c.contact && (c.contact.company || c.contact.fullName)) || 'Unknown'; const r = cm.get(k) || { name: k, n: 0, value: 0 }; r.n++; r.value += caseValue(c); cm.set(k, r); });
+  const clients = [...cm.values()].sort((a, b) => b.value - a.value).slice(0, 6);
+
+  return {
+    window: { from, to }, now, buckets, series, stages, panels, stageDays, ageBuckets, ests, clients,
+    dormant: dormantAll, awaiting: awaitingList,
+    kpi: {
+      open: { n: cases.filter(isOpen).length, value: sumBy(cases.filter(isOpen), caseValue) },
+      inProduction: { n: prod.length, value: sumBy(prod, caseValue) },
+      awaitingClient: { n: await_.length, value: sumBy(await_, caseValue), oldestDays: awaitingList.length ? awaitingList[0].ageDays : 0, over14: awaitingList.filter(a => a.ageDays > 14).length },
+      acceptedNotStarted: { n: accNotStarted.length, value: sumBy(accNotStarted, caseValue) },
+      awaitingQuote: { n: waitQuote.length, over48: waitQuote.filter(c => now - (c.createdAtMs || 0) > 48 * HOUR).length },
+      dormant: { n: dormantAll.length, inProduction: dormantAll.filter(d => d.stage === 'In Production').length, value: sumBy(dormantAll, d => d.value) },
+      requests: { n: created.length },
+      quotes: { n: firstQuoted.length, revisions },
+      accepted: { n: accepted.length, value: sumBy(accepted, caseValue) },
+      delivered: { n: delivered.length, value: sumBy(delivered, caseValue) },
+      conversion: { pct: firstQuoted.length ? Math.round(100 * wonOfQuoted / firstQuoted.length) : null, of: firstQuoted.length, won: wonOfQuoted },
+      avgOrder: accepted.length ? sumBy(accepted, caseValue) / accepted.length : null,
+      tQuoteHrs: median(tQuote), tDecideDays: median(tDecide), tBuildDays: median(tBuild),
+    },
+    deliveredList: delivered.map(c => ({ caseNo: c.caseNo, name: (c.contact && (c.contact.company || c.contact.fullName)) || '', panel: c.panelName || '', t: deliveredT(c), value: caseValue(c) })).sort((a, b) => b.t - a.t),
+  };
+}
+
+/* spreadsheet-friendly export of every case in view */
+function casesToCSV(cases, events, estName){
+  const cell = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  const d = t => t ? new Date(t).toISOString().slice(0, 10) : '';
+  const evBy = {}; (events || []).forEach(e => { if(e.kind === 'stage' && e.stage === DONE_STAGE && !evBy[e.caseNo]) evBy[e.caseNo] = e.t; });
+  const head = ['Case no.', 'Panel', 'Client', 'Company', 'Status', 'Estimator', 'Requested', 'First quote', 'Quote value (ex tax)', 'Accepted', 'Delivered', 'Last activity'];
+  const rows = cases.map(c => { const q = quoteTimes(c);
+    return [c.caseNo, c.panelName, c.contact && c.contact.fullName, c.contact && c.contact.company, c.status, estName(c.assignedEstimatorId), d(c.createdAtMs), d(q[0]), c.quoteAmount != null ? caseValue(c) : '', d(c.acceptedAt),
+            d(c.status === DONE_STAGE ? (evBy[c.caseNo] || c.updatedAt) : null), d(lastActivityOf(c))].map(cell).join(','); });
+  return '﻿' + [head.map(cell).join(',')].concat(rows).join('\r\n');
+}
+
+/* a realistic made-up business so the charts can be previewed before real orders exist */
+function makeSampleData(now, estimators, panelNames){
+  let s = 20260301;
+  const rnd = () => { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const pick = a => a[Math.floor(rnd() * a.length)];
+  const clients = ['Goldstar Fuels Ltd', 'Volta Mining Services', 'Accra Brewery Co.', 'Tema Cold Stores', 'Kumasi Textiles', 'GreenField Farms', 'Takoradi Port Services', 'Ridge Medical Centre', 'Sunyani Water Works', 'Cape Coast Hotels'];
+  const names = ['Kwame Mensah', 'Ama Boateng', 'Kofi Asare', 'Efua Owusu', 'Yaw Darko', 'Abena Quaye'];
+  const ests = estimators.length ? estimators : [{ id: 'est1', name: 'Estimator' }];
+  const cases = [], events = [];
+  const N = 78, spanDays = 420;
+  for(let i = 0; i < N; i++){
+    const created = now - spanDays * DAY * Math.pow(rnd(), 0.85) - rnd() * DAY;
+    const est = pick(ests), panel = pick(panelNames), cl = pick(clients);
+    const no = 'ESL-' + new Date(created).getFullYear() + '-' + String(1801 + i).padStart(5, '0');
+    const c = { caseNo: no, panelName: panel, createdAtMs: created, updatedAt: created, status: 'Case Received', assignedEstimatorId: null, quoteHistory: [], timeline: [], quoteTerms: { taxIncl: false },
+                contact: { fullName: pick(names), company: cl } };
+    const ev = (kind, t, extra) => events.push(Object.assign({ caseNo: no, t, kind }, extra));
+    ev('created', created, { stage: 'Case Received' });
+    let t = created, alive = true;
+    const move = (stage, dt) => { t += dt; c.status = stage; c.updatedAt = t; ev('stage', t, { stage }); };
+    if(rnd() < 0.93 || created < now - 10 * DAY){ c.assignedEstimatorId = est.id; move('Under Estimator Review', (0.5 + rnd() * 20) * HOUR); } else alive = false;
+    if(alive && t < now - HOUR){
+      const quoteAt = t + (3 + rnd() * 70) * HOUR;
+      if(quoteAt < now && rnd() < 0.95){
+        const amount = Math.round((18000 + Math.pow(rnd(), 2) * 320000) / 100) * 100;
+        c.quoteAmount = amount; t = quoteAt; c.quoteHistory.push({ id: 'q' + i, t, amount, rev: 1 }); c.status = 'Quotation Issued'; c.updatedAt = t;
+        ev('stage', t, { stage: 'Quotation Issued' }); ev('quote', t, { amount });
+        if(rnd() < 0.22 && t + 6 * DAY < now){ t += (2 + rnd() * 6) * DAY; c.quoteHistory.push({ id: 'r' + i, t, amount: Math.round(amount * 0.95 / 100) * 100, rev: 2 }); c.quoteAmount = c.quoteHistory[1].amount; c.updatedAt = t; ev('quote', t, { amount: c.quoteAmount }); }
+        const decideAt = t + (1 + rnd() * 16) * DAY;
+        if(rnd() < 0.9 && decideAt < now){
+          t = decideAt; c.acceptedAt = t; c.acceptedAmount = c.quoteAmount; c.status = 'Client Acceptance'; c.updatedAt = t; ev('stage', t, { stage: 'Client Acceptance' }); ev('accepted', t, { amount: c.quoteAmount });
+          const prodAt = t + (0.5 + rnd() * 5) * DAY;
+          if(prodAt < now){
+            t = prodAt; c.status = 'In Production'; c.updatedAt = t; ev('stage', t, { stage: 'In Production' });
+            const doneAt = t + (14 + rnd() * 60) * DAY;
+            if(doneAt < now){ t = doneAt; c.status = DONE_STAGE; c.updatedAt = t; ev('stage', t, { stage: DONE_STAGE }); }
+            else if(rnd() < 0.18){ c.updatedAt = Math.min(c.updatedAt, now - (9 + rnd() * 20) * DAY); }      // a stalled build
+          }
+        } else if(decideAt >= now && rnd() < 0.5){ c.updatedAt = Math.min(c.updatedAt, now - (1 + rnd() * 3) * DAY); }
+      }
+    }
+    c.timeline = [{ id: 'x' + i, t: c.updatedAt, text: 'sample' }];
+    cases.push(c);
+  }
+  return { cases, events };
+}
+
+/* ---------------------------------------------------------------
+   COORDINATOR CONSOLE — staff accounts, business insights, quotation delivery, settings
+--------------------------------------------------------------- */
+const DEFAULT_SETTINGS = { ccSales: true, ccEstimator: true, ccAdmins: true, alwaysCc: [], whatsapp: true, dormantDays: 7, defaultCountry: '233' };
+let settings = Object.assign({}, DEFAULT_SETTINGS);
+let STAFF = [];          // everyone at TAGG who has a login (from the database)
+let events = [];         // stage-change history (coordinator only)
+let dispatchLog = [];    // quotation e-mail / WhatsApp log
+const ROLE_ORDER = ['estimator', 'admin', 'sales', 'designer', 'coordinator'];
+const ROLE_HINT = {
+  estimator: 'Prices requests and issues quotations',
+  admin: 'Front desk: call routing and case look-up',
+  sales: 'Logs client requests, JCFs and waybills',
+  designer: 'Drawings, production progress and ETA',
+  coordinator: 'Staff accounts, settings and business insights',
+};
+const NO_PHONE_HINT = 'Appears in the e-mail signature of quotations (after the company main line).';
+Object.assign(state, { coTab: 'insights', coRange: '90', coFrom: '', coTo: '', coSample: false, coTables: {}, coEditId: null, coCreated: null, coBusy: false, coPing: null, coDlgOpen: null });
+
+const compactNum = n => { const a = Math.abs(n); return a >= 1e6 ? (n / 1e6).toFixed(a >= 1e7 ? 0 : 1).replace(/\.0$/, '') + 'M' : a >= 1e3 ? (n / 1e3).toFixed(a >= 1e4 ? 0 : 1).replace(/\.0$/, '') + 'k' : String(Math.round(n)); };
+const money = n => 'GHS ' + Math.round(n).toLocaleString('en-GB');
+const days1 = d => d == null ? '—' : (d < 10 ? d.toFixed(1) : Math.round(d)) + ' d';
+const hrs1 = h => h == null ? '—' : h < 48 ? (h < 10 ? h.toFixed(1) : Math.round(h)) + ' h' : (h / 24).toFixed(1) + ' d';
+const staffName = id => { const e = estOf(id); return e ? e.name : (id ? id : 'Unassigned'); };
+
+/* ---- chart helpers (plain SVG / HTML, no libraries) ---- */
+function axisFor(vmax, integer){
+  const steps = [1, 2, 2.5, 5]; let best = null;
+  for(let p = 0; p < 12 && !best; p++) for(const s of steps){ const st = s * Math.pow(10, p); if(integer && st < 1) continue; if(Math.ceil(vmax / st) <= 5){ best = st; break; } }
+  const max = Math.max(best, Math.ceil(vmax / best) * best), ticks = []; for(let v = 0; v <= max + 1e-9; v += best) ticks.push(v);
+  return { max, ticks };
+}
+function legendHTML(items){ return `<div class="legend">${items.map(i => `<span><i style="background:${i.color}"></i>${esc(i.name)}</span>`).join('')}</div>`; }
+function twinTable(head, rows){
+  return `<table class="twin"><thead><tr>${head.map((h, i) => `<th${i ? ' class="r"' : ''}>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map((v, i) => `<td${i ? ' class="r"' : ''}>${esc(v)}</td>`).join('')}</tr>`).join('') || `<tr><td colspan="${head.length}" class="summary-empty">No data in this period.</td></tr>`}</tbody></table>`;
+}
+function hbarsHTML(rows, o){      // rows: [{label, value, text, tip, strong}]
+  o = o || {}; const max = Math.max(1, ...rows.map(r => r.value || 0));
+  if(!rows.length || rows.every(r => !r.value)) return `<div class="summary-empty">${esc(o.empty || 'Nothing to show for this period yet.')}</div>`;
+  return `<div class="hbars">${rows.map(r => `<div class="hbar${r.strong ? ' strong' : ''}" data-tip="${esc(r.tip || (r.label + ': ' + r.text))}"><span class="hl" title="${esc(r.label)}">${esc(r.label)}</span><span class="hm"><span class="hf" style="width:${Math.max(r.value ? 1.5 : 0, 100 * (r.value || 0) / max)}%"></span></span><span class="hv">${esc(r.text)}</span></div>`).join('')}</div>`;
+}
+function lineChartSVG(cats, series, o){
+  o = o || {};
+  const W = 600, H = 236, m = { l: 34, r: 84, t: 12, b: 26 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const ax = axisFor(Math.max(1, ...series.flatMap(s => s.vals)), true);
+  const X = i => m.l + (cats.length <= 1 ? iw / 2 : iw * i / (cats.length - 1)), Y = v => m.t + ih - ih * v / ax.max;
+  const every = Math.ceil(cats.length / 7), step = cats.length <= 1 ? iw : iw / (cats.length - 1);
+  let g = ax.ticks.map(v => `<line class="gl" x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`).join('');
+  g += cats.map((c, i) => i % every === 0 ? `<text x="${X(i)}" y="${H - 8}" text-anchor="middle">${esc(c)}</text>` : '').join('');
+  series.forEach(s => { g += `<path d="${s.vals.map((v, i) => (i ? 'L' : 'M') + X(i).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' ')}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`; });
+  // end markers + direct labels (nudged apart so they never overlap)
+  const ends = series.map(s => ({ s, y: Y(s.vals[s.vals.length - 1]) })).sort((a, b) => a.y - b.y);
+  for(let i = 1; i < ends.length; i++) if(ends[i].y - ends[i - 1].y < 13) ends[i].y = ends[i - 1].y + 13;
+  ends.forEach(e => { const i = cats.length - 1; g += `<circle cx="${X(i)}" cy="${Y(e.s.vals[i])}" r="4.5" fill="${e.s.color}" stroke="var(--panel)" stroke-width="2"/><text class="dl" x="${X(i) + 10}" y="${e.y + 4}">${esc(e.s.name)}</text>`; });
+  cats.forEach((c, i) => {
+    const tip = `<b>${esc(c)}</b>` + series.map(s => `<br><span class="sw" style="background:${s.color}"></span>${esc(s.name)}: <b>${s.vals[i]}</b>`).join('');
+    g += `<g class="col"><rect class="hit" x="${X(i) - step / 2}" y="${m.t}" width="${step}" height="${ih}" data-tip="${esc(tip)}"/><g class="xh"><line x1="${X(i)}" x2="${X(i)}" y1="${m.t}" y2="${m.t + ih}"/>${series.map(s => `<circle cx="${X(i)}" cy="${Y(s.vals[i])}" r="4.5" fill="${s.color}"/>`).join('')}</g></g>`;
+  });
+  return `<svg class="viz-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || '')}">${g}</svg>`;
+}
+function columnsSVG(cats, vals, o){
+  o = o || {};
+  const W = 600, H = 220, m = { l: 40, r: 8, t: 16, b: 26 }, iw = W - m.l - m.r, ih = H - m.t - m.b;
+  const ax = axisFor(Math.max(1, ...vals), true), band = iw / cats.length, bw = Math.max(6, Math.min(36, band * 0.62));
+  const Y = v => m.t + ih - ih * v / ax.max, every = Math.ceil(cats.length / 8);
+  let g = ax.ticks.map(v => `<line class="gl" x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${m.l - 6}" y="${Y(v) + 4}" text-anchor="end">${v}</text>`).join('');
+  const maxI = vals.indexOf(Math.max(...vals));
+  cats.forEach((c, i) => {
+    const cx = m.l + band * (i + 0.5), x = cx - bw / 2, h = ih * vals[i] / ax.max, y = m.t + ih - h, r = Math.min(4, bw / 2, h);
+    if(i % every === 0) g += `<text x="${cx}" y="${H - 8}" text-anchor="middle">${esc(c)}</text>`;
+    const tip = `<b>${esc(c)}</b><br>${vals[i]} ${o.unit || ''}` + (o.extra ? '<br>' + esc(o.extra[i]) : '');
+    g += `<g class="col">` + (vals[i] > 0 ? `<path class="bar" d="M${x},${y + h} V${y + r} Q${x},${y} ${x + r},${y} H${x + bw - r} Q${x + bw},${y} ${x + bw},${y + r} V${y + h} Z" fill="var(--s1)"/>` : '')
+      + (vals[i] > 0 && (i === maxI || i === cats.length - 1) ? `<text class="vl" x="${cx}" y="${y - 5}" text-anchor="middle">${vals[i]}</text>` : '')
+      + `<rect class="hit" x="${m.l + band * i}" y="${m.t}" width="${band}" height="${ih}" data-tip="${esc(tip)}"/></g>`;
+  });
+  return `<svg class="viz-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || '')}">${g}</svg>`;
+}
+function vizCard(key, title, hint, chart, table, extraHead){
+  const t = !!state.coTables[key];
+  return `<section class="console-card viz"><div class="ch"><h3>${esc(title)}</h3><span style="display:flex;gap:8px;align-items:center;">${extraHead || ''}<button type="button" class="ghost small viz-toggle" data-key="${key}" aria-pressed="${t}">${t ? 'Show chart' : 'Show table'}</button></span></div><div class="cb">${hint ? `<div class="hint-text">${hint}</div>` : ''}${t ? table : chart}</div></section>`;
+}
+function tipEl(){
+  let el = $('viz-tip'); if(!el){ el = document.createElement('div'); el.id = 'viz-tip'; document.body.appendChild(el); } return el;
+}
+document.addEventListener('mouseover', e => {
+  const t = e.target.closest && e.target.closest('[data-tip]'); const el = tipEl();
+  if(!t || !t.closest('.viz')){ el.style.display = 'none'; return; }
+  el.innerHTML = t.getAttribute('data-tip'); el.style.display = 'block';
+});
+document.addEventListener('mousemove', e => {
+  const el = tipEl(); if(el.style.display !== 'block') return;
+  const w = el.offsetWidth, h = el.offsetHeight; let x = e.clientX + 14, y = e.clientY + 14;
+  if(x + w > innerWidth - 8) x = e.clientX - w - 14; if(y + h > innerHeight - 8) y = e.clientY - h - 14;
+  el.style.left = Math.max(4, x) + 'px'; el.style.top = Math.max(4, y) + 'px';
+});
+document.addEventListener('mouseout', e => { if(!e.relatedTarget || !e.relatedTarget.closest || !e.relatedTarget.closest('[data-tip]')) tipEl().style.display = 'none'; });
+
+/* ---- data the insights are built from ---- */
+function insightData(){
+  const now = Date.now();
+  let from, to = now;
+  if(state.coRange === 'custom'){
+    from = state.coFrom ? new Date(state.coFrom + 'T00:00:00').getTime() : now - 90 * DAY;
+    to = state.coTo ? new Date(state.coTo + 'T23:59:59').getTime() : now;
+  } else from = state.coRange === 'all' ? null : now - Number(state.coRange) * DAY;
+  let src = { cases, events };
+  if(state.coSample){
+    if(!state.coSampleData) state.coSampleData = makeSampleData(now, ESTIMATORS.filter(e => e.active !== false).slice(0, 4), Object.values(PANELS).map(p => p.name));
+    src = state.coSampleData;
+  }
+  const ests = state.coSample ? ESTIMATORS.filter(e => e.active !== false).slice(0, 4) : ESTIMATORS;
+  return { src, R: computeInsights(src.cases, src.events, { now, from, to, dormantDays: settings.dormantDays, estimators: ests }) };
+}
+const rangeLabel = R => state.coRange === 'all' ? 'all time' : state.coRange === 'custom' ? `${fmtDate(R.window.from)} – ${fmtDate(R.window.to)}` : `the last ${state.coRange} days`;
+
+function kpiTile(label, value, sub, cls){
+  return `<div class="kpi${cls ? ' ' + cls : ''}"><div class="kl">${esc(label)}</div><div class="kv">${value}</div><div class="ks">${sub || '&nbsp;'}</div></div>`;
+}
+
+function renderCoInsights(){
+  const { src, R } = insightData(), K = R.kpi, W = $('co-body');
+  const noData = !src.cases.length;
+  const rangeBtns = [['30', '30 days'], ['90', '90 days'], ['365', '12 months'], ['all', 'All time'], ['custom', 'Custom']]
+    .map(([k, l]) => `<button type="button" class="${state.coRange === k ? 'active' : ''}" data-range="${k}">${l}</button>`).join('');
+  const bar = `<div class="co-bar"><div class="co-ranges"><nav class="tabs" aria-label="Period">${rangeBtns}</nav>
+      ${state.coRange === 'custom' ? `<label class="dt">From <input type="date" id="co-from" value="${esc(state.coFrom)}"></label><label class="dt">To <input type="date" id="co-to" value="${esc(state.coTo)}"></label>` : ''}</div>
+    <div class="co-ranges"><label class="chk"><input type="checkbox" id="co-sample"${state.coSample ? ' checked' : ''}> Preview with sample data</label><button type="button" class="ghost small" id="co-csv">Download CSV</button></div></div>`;
+  const banner = state.coSample ? `<div class="warn-banner">&#9888; <span><b>Sample data.</b> These numbers are made up so you can see how the charts look. Untick “Preview with sample data” to see your real orders.</span></div>`
+    : noData ? `<div class="info-banner">&#9432; <span>No requests exist yet, so the charts are empty. Tick “Preview with sample data” to see how they will look.</span></div>` : '';
+
+  const now = `<h3 class="co-h">Right now</h3><div class="kpi-grid">
+    ${kpiTile('In production', K.inProduction.n, money(K.inProduction.value))}
+    ${kpiTile('Quotations pending client', K.awaitingClient.n, K.awaitingClient.n ? `${money(K.awaitingClient.value)} · oldest ${K.awaitingClient.oldestDays} d` : 'Nothing waiting', K.awaitingClient.over14 ? 'warn' : '')}
+    ${kpiTile('Awaiting a quotation', K.awaitingQuote.n, K.awaitingQuote.over48 ? `${K.awaitingQuote.over48} waiting over 48 h` : 'None overdue', K.awaitingQuote.over48 ? 'warn' : '')}
+    ${kpiTile('Accepted, not yet started', K.acceptedNotStarted.n, money(K.acceptedNotStarted.value))}
+    ${kpiTile('Dormant orders', K.dormant.n, K.dormant.n ? `No activity for over ${settings.dormantDays} days${K.dormant.inProduction ? ' · ' + K.dormant.inProduction + ' in production' : ''}` : `None idle over ${settings.dormantDays} days`, K.dormant.n ? 'alert' : '')}
+    ${kpiTile('Open orders', K.open.n, money(K.open.value))}
+  </div>`;
+  const per = `<h3 class="co-h">In ${esc(rangeLabel(R))}</h3><div class="kpi-grid">
+    ${kpiTile('Requests received', K.requests.n, '')}
+    ${kpiTile('Quotations issued', K.quotes.n, K.quotes.revisions ? `+ ${K.quotes.revisions} revised` : 'First quotes')}
+    ${kpiTile('Orders accepted', K.accepted.n, money(K.accepted.value))}
+    ${kpiTile('Panels delivered', K.delivered.n, money(K.delivered.value))}
+    ${kpiTile('Quote-to-order rate', K.conversion.pct == null ? '—' : K.conversion.pct + '%', K.conversion.of ? `${K.conversion.won} of ${K.conversion.of} quotes accepted` : 'No quotes issued')}
+    ${kpiTile('Average order', K.avgOrder == null ? '—' : money(K.avgOrder), 'Excluding taxes')}
+    ${kpiTile('Time to quote', hrs1(K.tQuoteHrs), 'Median, request to first quote')}
+    ${kpiTile('Build time', days1(K.tBuildDays), 'Median, acceptance to delivery')}
+  </div>`;
+
+  const S = R.series, cats = R.buckets.map(b => b.label);
+  const ST = STATUS_STAGES.map((s, i) => R.stages[i]);
+  const c1 = hbarsHTML(ST.map(s => ({ label: s.stage, value: s.count, text: String(s.count), tip: `<b>${esc(s.stage)}</b><br>${s.count} order${s.count === 1 ? '' : 's'} · ${money(s.value)}` })), { empty: 'No orders yet.' });
+  const t1 = twinTable(['Stage', 'Orders', 'Value (GHS)'], ST.map(s => [s.stage, s.count, Math.round(s.value).toLocaleString('en-GB')]));
+  const lineSeries = [{ name: 'Requests', color: 'var(--s1)', vals: S.requests }, { name: 'Quotations', color: 'var(--s2)', vals: S.quotes }, { name: 'Accepted', color: 'var(--s3)', vals: S.accepted }];
+  const c2 = legendHTML(lineSeries) + lineChartSVG(cats, lineSeries, { label: 'Requests, quotations and accepted orders over time' });
+  const t2 = twinTable(['Period', 'Requests', 'Quotations', 'Accepted'], cats.map((c, i) => [c, S.requests[i], S.quotes[i], S.accepted[i]]));
+  const c3 = columnsSVG(cats, S.delivered, { unit: 'panels delivered', extra: S.deliveredValue.map(v => money(v)), label: 'Panels delivered per period' });
+  const t3 = twinTable(['Period', 'Delivered', 'Value (GHS)'], cats.map((c, i) => [c, S.delivered[i], Math.round(S.deliveredValue[i]).toLocaleString('en-GB')]));
+  const c4 = hbarsHTML(R.panels.map(p => ({ label: p.name, value: p.n, text: String(p.n), tip: `<b>${esc(p.name)}</b><br>${p.n} request${p.n === 1 ? '' : 's'} · ${money(p.value)} quoted` })), { empty: 'No requests in this period.' });
+  const t4 = twinTable(['Panel family', 'Requests', 'Quoted (GHS)'], R.panels.map(p => [p.name, p.n, Math.round(p.value).toLocaleString('en-GB')]));
+  const maxD = Math.max(0, ...R.stageDays.map(s => s.avgDays || 0));
+  const c5 = hbarsHTML(R.stageDays.map(s => ({ label: s.stage, value: s.avgDays || 0, strong: s.avgDays && s.avgDays === maxD, text: s.avgDays == null ? '—' : days1(s.avgDays), tip: `<b>${esc(s.stage)}</b><br>Average ${s.avgDays == null ? 'n/a' : days1(s.avgDays)} · ${s.n} order${s.n === 1 ? '' : 's'}` })), { empty: 'Not enough stage history in this period yet.' });
+  const t5 = twinTable(['Stage', 'Average days', 'Orders'], R.stageDays.map(s => [s.stage, s.avgDays == null ? '—' : s.avgDays.toFixed(1), s.n]));
+  const c6 = hbarsHTML(R.ageBuckets.map(b => ({ label: b.label, value: b.n, text: String(b.n), tip: `<b>${esc(b.label)}</b><br>${b.n} quotation${b.n === 1 ? '' : 's'} · ${money(b.value)}` })), { empty: 'No quotations are waiting on a client.' });
+  const t6 = twinTable(['Waiting for', 'Quotations', 'Value (GHS)'], R.ageBuckets.map(b => [b.label, b.n, Math.round(b.value).toLocaleString('en-GB')]));
+
+  const caseLink = no => `<a href="#" class="co-case" data-case="${esc(no)}">${esc(no)}</a>`;
+  const dormRows = R.dormant.slice(0, 10).map(d => `<tr><td>${esc(d.caseNo)}</td><td>${esc(d.name)}<div class="hint-text">${esc(d.panel)}</div></td><td>${statusChip(d.stage)}</td><td>${esc(staffName(d.est))}</td><td class="r">${d.idleDays} d</td></tr>`).join('');
+  const dormant = `<section class="console-card"><div class="ch"><h3>Dormant orders — no activity for over ${settings.dormantDays} days</h3><span class="hint-text">${R.dormant.length} in total</span></div><div class="cb">${dormRows ? `<table><thead><tr><th>Case</th><th>Client</th><th>Stage</th><th>Estimator</th><th class="r">Idle</th></tr></thead><tbody>${dormRows}</tbody></table>` : '<div class="summary-empty">Nothing is stuck — every open order has moved recently.</div>'}</div></section>`;
+  const awRows = R.awaiting.slice(0, 8).map(a => `<tr><td>${esc(a.caseNo)}</td><td>${esc(a.name)}<div class="hint-text">${esc(a.panel)}</div></td><td>${esc(staffName(a.est))}</td><td class="r">${money(a.value)}</td><td class="r">${a.ageDays} d</td></tr>`).join('');
+  const awaiting = `<section class="console-card"><div class="ch"><h3>Quotations waiting longest for the client</h3><span class="hint-text">${R.awaiting.length} in total</span></div><div class="cb">${awRows ? `<table><thead><tr><th>Case</th><th>Client</th><th>Estimator</th><th class="r">Value</th><th class="r">Waiting</th></tr></thead><tbody>${awRows}</tbody></table>` : '<div class="summary-empty">No quotations are waiting on a client.</div>'}</div></section>`;
+  const estRows = R.ests.map(e => `<tr><td>${esc(e.name)}</td><td class="r">${e.open}</td><td class="r">${e.quoted}</td><td class="r">${hrs1(e.medianQuoteHrs)}</td><td class="r">${e.quoted ? e.won + ' / ' + e.quoted : '—'}</td><td class="r">${money(e.value)}</td></tr>`).join('');
+  const people = `<section class="console-card"><div class="ch"><h3>Estimator workload and speed</h3><span class="hint-text">${esc(rangeLabel(R))}</span></div><div class="cb">${estRows ? `<table><thead><tr><th>Estimator</th><th class="r">Open</th><th class="r">Quoted</th><th class="r">Median time to quote</th><th class="r">Won</th><th class="r">Won value</th></tr></thead><tbody>${estRows}</tbody></table>` : '<div class="summary-empty">No estimator activity in this period.</div>'}</div></section>`;
+  const cliRows = R.clients.map(c => `<tr><td>${esc(c.name)}</td><td class="r">${c.n}</td><td class="r">${money(c.value)}</td></tr>`).join('');
+  const clients = `<section class="console-card"><div class="ch"><h3>Top clients by accepted value</h3><span class="hint-text">${esc(rangeLabel(R))}</span></div><div class="cb">${cliRows ? `<table><thead><tr><th>Client</th><th class="r">Orders</th><th class="r">Value</th></tr></thead><tbody>${cliRows}</tbody></table>` : '<div class="summary-empty">No accepted orders in this period.</div>'}</div></section>`;
+
+  W.innerHTML = `${bar}${banner}${now}${per}
+    <div class="viz-grid">
+      ${vizCard('pipeline', 'Orders by stage — today', 'Every order that exists, by where it is now.', c1, t1)}
+      ${vizCard('trend', 'Requests, quotations and accepted orders', `Counted per ${R.buckets.length && (R.buckets[0].end - R.buckets[0].start) < 2 * DAY ? 'day' : (R.buckets[0] && (R.buckets[0].end - R.buckets[0].start) < 10 * DAY ? 'week' : 'month')}.`, c2, t2)}
+      ${vizCard('delivered', 'Panels delivered', `${K.delivered.n} delivered in ${esc(rangeLabel(R))} · ${money(K.delivered.value)}`, c3, t3)}
+      ${vizCard('panels', 'Demand by panel family', 'Requests received in this period.', c4, t4)}
+      ${vizCard('stagetime', 'Where orders spend their time', 'Average days an order sits in each stage — the longest bar is the bottleneck.', c5, t5)}
+      ${vizCard('ageing', 'How long quotations have been waiting', 'Quotations the client has not yet answered, by age.', c6, t6)}
+    </div>
+    <div class="co-two">${dormant}${awaiting}</div>
+    <div class="co-two">${people}${clients}</div>
+    <p class="hint-text" style="margin-top:14px;">Values exclude NHIL, GETFund and VAT. “Quote-to-order rate” is the share of quotations first issued in the period that the client has accepted so far.</p>`;
+
+  W.querySelectorAll('[data-range]').forEach(b => b.onclick = () => { state.coRange = b.dataset.range; renderCoordinator(); });
+  const f = $('co-from'), t = $('co-to');
+  if(f) f.onchange = () => { state.coFrom = f.value; renderCoordinator(); };
+  if(t) t.onchange = () => { state.coTo = t.value; renderCoordinator(); };
+  $('co-sample').onchange = e => { state.coSample = e.target.checked; renderCoordinator(); };
+  W.querySelectorAll('.viz-toggle').forEach(b => b.onclick = () => { state.coTables[b.dataset.key] = !state.coTables[b.dataset.key]; renderCoordinator(); });
+  $('co-csv').onclick = () => {
+    const blob = new Blob([casesToCSV(src.cases, src.events, staffName)], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `esl-orders-${new Date().toISOString().slice(0, 10)}.csv`; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  };
+}
+
+/* ---- staff accounts ---- */
+function copyText(text){
+  const done = () => toast('Copied to the clipboard.');
+  if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, () => toast('Select the text and copy it manually.'));
+  else { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); done(); }catch(e){ toast('Select the text and copy it manually.'); } ta.remove(); }
+}
+const loginUrl = () => location.origin + location.pathname;
+function credentialsCardHTML(c){
+  const text = `ESL Configure & Quote Portal\nSign in at: ${loginUrl()}\nChoose the “TAGG Staff” link, then the portfolio: ${ROLE_LABEL[c.role] || c.role}\nEmail: ${c.email}\nPassword: ${c.password}`;
+  return `<div class="creds"><div><b>${esc(c.title)}</b> — share this once, then ask them to keep it private.</div>
+    <pre id="co-creds-text">${esc(text)}</pre>
+    <div class="btn-row"><button class="primary small" id="co-copy-creds">Copy</button><button class="ghost small" id="co-hide-creds">Done</button></div>
+    ${LIVE_ACTIVE ? '' : '<div class="hint-text">Demo mode: this account is only a preview — it cannot sign in.</div>'}</div>`;
+}
+function renderCoStaff(){
+  const W = $('co-body');
+  const list = STAFF.slice().sort((a, b) => ROLE_ORDER.indexOf(a.role) - ROLE_ORDER.indexOf(b.role) || a.name.localeCompare(b.name));
+  const rows = list.map(p => {
+    if(state.coEditId === p.id) return `<tr class="editing"><td colspan="7"><div class="staff-edit" data-id="${esc(p.id)}">
+        <div class="field"><label class="flabel">Name</label><input type="text" data-f="name" value="${esc(p.name)}"></div>
+        <div class="field"><label class="flabel">Role</label><select data-f="role"${p.id === state.profile.uid ? ' disabled' : ''}>${ROLE_ORDER.map(r => `<option value="${r}"${p.role === r ? ' selected' : ''}>${esc(ROLE_LABEL[r])}</option>`).join('')}</select></div>
+        <div class="field"><label class="flabel">Mobile number</label><input type="text" data-f="phone" value="${esc(p.phone || '')}" placeholder="+233 54 289 5282"></div>
+        <div class="field"><label class="flabel">Specialty</label><input type="text" data-f="specialty" value="${esc(p.specialty || '')}" placeholder="e.g. ATS / Power Panels"></div>
+        <div class="btn-row"><button class="primary small" data-save="${esc(p.id)}">Save</button><button class="ghost small" data-cancel="1">Cancel</button></div></div></td></tr>`;
+    const me = p.id === state.profile.uid;
+    return `<tr class="${p.active === false ? 'off' : ''}"><td><b>${esc(p.name)}</b>${me ? ' <span class="tag-info">You</span>' : ''}</td><td>${esc(ROLE_LABEL[p.role] || p.role)}</td><td>${esc(p.email || '—')}</td><td>${esc(p.phone || '—')}${p.role === 'estimator' && !p.phone ? ' <span class="tag-flag">Needed</span>' : ''}</td><td>${esc(p.specialty || '—')}</td>
+      <td>${p.active === false ? '<span class="status-chip" style="background:rgba(224,112,95,0.18);color:var(--danger-fg)">Deactivated</span>' : '<span class="status-chip" style="background:rgba(95,185,140,0.16);color:var(--ok-fg)">Active</span>'}</td>
+      <td class="acts"><button class="ghost small" data-edit="${esc(p.id)}">Edit</button> <button class="ghost small" data-reset="${esc(p.id)}">Reset password</button>${me ? '' : ` <button class="ghost small" data-toggle="${esc(p.id)}">${p.active === false ? 'Reactivate' : 'Deactivate'}</button>`}</td></tr>`;
+  }).join('');
+  W.innerHTML = `${state.coCreated ? `<div class="console-card" style="margin-bottom:18px;"><div class="cb">${credentialsCardHTML(state.coCreated)}</div></div>` : ''}
+    <div class="console-card"><div class="ch"><h3>Add a staff member</h3></div><div class="cb">
+      <p class="hint-text" style="margin:0;">Creates the login and sets the portfolio in one step — no code or database editing needed. The new person signs in through <b>TAGG Staff</b> on the home page.</p>
+      <div class="staff-form">
+        <div class="field"><label class="flabel" for="sf-name">Full name *</label><input type="text" id="sf-name" placeholder="e.g. Abena Owusu"></div>
+        <div class="field"><label class="flabel" for="sf-email">Work email *</label><input type="email" id="sf-email" placeholder="name@automationghana.com"></div>
+        <div class="field"><label class="flabel" for="sf-role">Role *</label><select id="sf-role">${ROLE_ORDER.map(r => `<option value="${r}">${esc(ROLE_LABEL[r])} — ${esc(ROLE_HINT[r])}</option>`).join('')}</select></div>
+        <div class="field"><label class="flabel" for="sf-phone" id="sf-phone-label">Mobile number <span id="sf-phone-req">*</span></label><input type="text" id="sf-phone" placeholder="+233 54 289 5282"><div class="hint-text">${esc(NO_PHONE_HINT)} Required for estimators.</div></div>
+        <div class="field"><label class="flabel" for="sf-spec">Specialty (optional)</label><input type="text" id="sf-spec" placeholder="e.g. PLC / SCADA"></div>
+        <div class="field"><label class="flabel" for="sf-pass">Password</label><input type="text" id="sf-pass" placeholder="Leave blank to generate a strong one" autocomplete="off"></div>
+      </div>
+      <div id="sf-error"></div>
+      <div class="btn-row"><button class="primary" id="sf-create"${state.coBusy ? ' disabled' : ''}>Create login</button></div>
+    </div></div>
+    <div class="console-card" style="margin-top:18px;"><div class="ch"><h3>TAGG staff (${list.length})</h3><button class="ghost small" id="sf-refresh">Refresh</button></div><div class="cb">
+      ${list.length ? `<div class="tablewrap"><table class="staff"><thead><tr><th>Name</th><th>Role</th><th>Email</th><th>Mobile</th><th>Specialty</th><th>Status</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : '<div class="summary-empty">No staff accounts yet.</div>'}
+      <div class="hint-text">Deactivating blocks sign-in immediately but keeps the person’s history on past cases. Estimators who are deactivated no longer appear in the assignment list.</div>
+    </div></div>`;
+  const updPhoneReq = () => { $('sf-phone-req').style.display = $('sf-role').value === 'estimator' ? '' : 'none'; };
+  $('sf-role').onchange = updPhoneReq; updPhoneReq();
+  $('sf-refresh').onclick = () => refreshRoster(true);
+  $('sf-create').onclick = () => run(async () => {
+    const body = { action: 'create', name: $('sf-name').value.trim(), email: $('sf-email').value.trim(), role: $('sf-role').value, phone: $('sf-phone').value.trim(), specialty: $('sf-spec').value.trim(), password: $('sf-pass').value };
+    const err = m => { $('sf-error').innerHTML = `<div class="warn-banner">&#9888; ${esc(m)}</div>`; };
+    if(body.name.length < 2) return err('Enter the staff member’s full name.');
+    if(!EMAIL_RE.test(body.email)) return err('Enter a valid work email address.');
+    if(body.role === 'estimator' && !/^\+?\d[\d\s()-]{7,}$/.test(body.phone)) return err('Estimators need a mobile number — it goes in their quotation e-mail signature.');
+    if(body.password && body.password.length < 8) return err('A password you choose must be at least 8 characters (or leave it blank).');
+    $('sf-error').innerHTML = ''; state.coBusy = true; $('sf-create').disabled = true; $('sf-create').textContent = 'Creating…';
+    try{
+      const res = await DB.manageStaff(body);
+      state.coCreated = { title: `${body.name} — login ${res.promoted ? 'upgraded to staff' : 'created'}`, email: body.email.toLowerCase(), role: body.role, password: res.password };
+      await refreshRoster(); toast('Staff login created.');
+    } finally { state.coBusy = false; renderCoordinator(); }
+  });
+  W.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => { state.coEditId = b.dataset.edit; renderCoordinator(); });
+  W.querySelectorAll('[data-cancel]').forEach(b => b.onclick = () => { state.coEditId = null; renderCoordinator(); });
+  W.querySelectorAll('[data-save]').forEach(b => b.onclick = () => run(async () => {
+    const box = W.querySelector(`.staff-edit[data-id="${b.dataset.save}"]`); const g = k => { const el = box.querySelector(`[data-f="${k}"]`); return el ? el.value.trim() : undefined; };
+    const body = { action: 'update', id: b.dataset.save, name: g('name'), phone: g('phone'), specialty: g('specialty') }; const role = g('role'); if(role) body.role = role;
+    await DB.manageStaff(body); state.coEditId = null; await refreshRoster(); toast('Saved.'); renderCoordinator();
+  }));
+  W.querySelectorAll('[data-reset]').forEach(b => b.onclick = () => run(async () => {
+    const p = STAFF.find(x => x.id === b.dataset.reset); if(!window.confirm(`Reset the password for ${p.name}? Their old password stops working at once.`)) return;
+    const res = await DB.manageStaff({ action: 'reset_password', id: p.id });
+    state.coCreated = { title: `${p.name} — new password`, email: p.email, role: p.role, password: res.password }; renderCoordinator();
+  }));
+  W.querySelectorAll('[data-toggle]').forEach(b => b.onclick = () => run(async () => {
+    const p = STAFF.find(x => x.id === b.dataset.toggle), to = p.active === false;
+    if(!to && !window.confirm(`Deactivate ${p.name}? They will be signed out and unable to sign in until you reactivate them.`)) return;
+    await DB.manageStaff({ action: 'set_active', id: p.id, active: to }); await refreshRoster(); toast(to ? 'Reactivated.' : 'Deactivated.'); renderCoordinator();
+  }));
+  const cc = $('co-copy-creds'); if(cc) cc.onclick = () => copyText($('co-creds-text').textContent);
+  const hc = $('co-hide-creds'); if(hc) hc.onclick = () => { state.coCreated = null; renderCoordinator(); };
+}
+
+/* ---- delivery log ---- */
+const DELIV_LABEL = { sent: 'Sent', failed: 'Failed', not_configured: 'Not set up', skipped: 'Skipped', disabled: 'Switched off', not_on_whatsapp: 'Not on WhatsApp', simulated: 'Demo only' };
+function delivChip(s){
+  const kind = s === 'sent' ? 'ok' : (s === 'failed') ? 'bad' : 'warn';
+  const css = kind === 'ok' ? 'background:rgba(95,185,140,0.16);color:var(--ok-fg)' : kind === 'bad' ? 'background:rgba(224,112,95,0.18);color:var(--danger-fg)' : 'background:rgba(245,196,81,0.16);color:var(--warn-fg)';
+  return `<span class="status-chip" style="${css}">${esc(DELIV_LABEL[s] || s || '—')}</span>`;
+}
+function dispatchDetailHTML(d){
+  const e = d.email || {}, w = d.whatsapp || {};
+  const cc = (e.cc || []).map(x => `${esc(x.email)} <span class="hint-text">(${esc(x.why)})</span>`).join('<br>') || '—';
+  return `<div class="disp-detail"><div><b>E-mail to</b> ${esc(e.to || '—')}${e.error ? `<div class="alertline">${esc(e.error)}</div>` : ''}${e.warning ? `<div class="alertline">${esc(e.warning)}</div>` : ''}</div>
+    <div><b>Copied</b><br>${cc}</div><div><b>WhatsApp to</b> ${esc(w.to || '—')}${w.error ? `<div class="alertline">${esc(w.error)}</div>` : ''}</div></div>`;
+}
+async function loadPing(){
+  try{ state.coPing = await DB.pingDelivery(); }catch(e){ state.coPing = { error: friendlyError(e) }; }
+  if(state.role === 'coordinator' && state.coTab === 'delivery') renderCoordinator();
+}
+function renderCoDelivery(){
+  const W = $('co-body'), p = state.coPing;
+  let health;
+  if(p === null){ health = `<div class="info-banner">&#9432; Checking the sending set-up&hellip;</div>`; }
+  else if(p.error){ health = `<div class="warn-banner">&#9888; <span>Could not check the sending set-up: ${esc(p.error)} — the <b>send-quote</b> function may not be deployed yet (see SUPABASE_SETUP.md).</span></div>`; }
+  else if(p.demo){ health = `<div class="info-banner">&#9432; Demo mode: nothing is really sent. Live mode e-mails and WhatsApps the quotation when an estimator presses Issue.</div>`; }
+  else health = `<div class="health"><div><b>E-mail</b> ${p.email === 'none' ? delivChip('not_configured') + ' <span class="hint-text">add the mail secrets in Supabase</span>' : delivChip('sent').replace('Sent', 'Ready') + ` <span class="hint-text">via ${esc(p.email)}${p.from ? ' · from ' + esc(p.from) : ''}</span>`}</div>
+    <div><b>WhatsApp</b> ${p.whatsapp ? delivChip('sent').replace('Sent', 'Ready') : delivChip('not_configured') + ' <span class="hint-text">add the WhatsApp secrets in Supabase</span>'}</div></div>`;
+  const rows = dispatchLog.slice(0, 100).map(d => `<tr><td>${esc(fmtDT(d.at))}</td><td>${esc(d.caseNo)}</td><td class="r">${esc(d.rev)}</td><td>${esc(d.by || '—')}</td><td>${delivChip((d.email || {}).status)}</td><td>${delivChip((d.whatsapp || {}).status)}</td>
+    <td><details><summary>Details</summary>${dispatchDetailHTML(d)}</details></td></tr>`).join('');
+  W.innerHTML = `${health}<div class="console-card" style="margin-top:14px;"><div class="ch"><h3>Quotation delivery log</h3><span class="hint-text">latest ${Math.min(100, dispatchLog.length)}</span></div><div class="cb">
+      ${rows ? `<div class="tablewrap"><table><thead><tr><th>When</th><th>Case</th><th class="r">Rev.</th><th>Sent by</th><th>E-mail</th><th>WhatsApp</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>` : '<div class="summary-empty">Nothing has been sent yet. Each quotation an estimator issues will be listed here with its recipients and result.</div>'}
+    </div></div>`;
+}
+
+/* ---- settings ---- */
+function signaturePreviewHTML(e){
+  const mobile = e && e.phone ? ` | <span style="color:#d00">M</span>: ${esc(formatPhoneDisplay(e.phone))}` : '';
+  return `<div class="mailprev"><p>Dear Kwame Mensah,</p><p>Please find attached quotation for requested panel. Feel free to reach out for any clarification.</p><p>Best regards,</p>
+    <p class="sig"><b>${esc(e ? e.name : 'Estimator name')}</b><br><span style="color:#d00">______________________________________</span><br><small><span style="color:#d00">T</span>: ${esc(MAIN_LINE)}${mobile}<br><b style="color:#c00">E:</b> ${esc(e && e.email ? e.email : 'estimator@automationghana.com')} | www.automationghana.com<br>The Automation Ghana Group, Spintex Road Accra | Digital Address: GT-366-3796</small></p>
+    <div class="attach">&#128206; ESL-Quotation-ESL-2026-01801-Rev1.pdf</div></div>`;
+}
+const MAIN_LINE = '+233 302 812 680';
+function formatPhoneDisplay(raw){
+  const d = String(raw || '').replace(/\D/g, '');
+  if(d.startsWith('233') && d.length === 12) return `+233 ${d.slice(3, 6)} ${d.slice(6, 9)} ${d.slice(9)}`;
+  if(d.startsWith('0') && d.length === 10) return `+233 ${d.slice(1, 4)} ${d.slice(4, 7)} ${d.slice(7)}`;
+  return String(raw || '').trim();
+}
+function renderCoSettings(){
+  const W = $('co-body'), s = settings, ests = ESTIMATORS.filter(e => e.active !== false);
+  const sel = state.coPreviewEst && ests.find(e => e.id === state.coPreviewEst) || ests[0];
+  W.innerHTML = `<div class="co-two"><div class="console-card"><div class="ch"><h3>Who is copied on a quotation e-mail</h3></div><div class="cb">
+      <p class="hint-text" style="margin:0;">The client who asked for the quote always receives it, together with anyone they listed on the request form. These switches add the TAGG side.</p>
+      <label class="chk"><input type="checkbox" id="st-cc-est"${s.ccEstimator ? ' checked' : ''}> The assigned estimator</label>
+      <label class="chk"><input type="checkbox" id="st-cc-sales"${s.ccSales ? ' checked' : ''}> The sales person who logged the request</label>
+      <label class="chk"><input type="checkbox" id="st-cc-admin"${s.ccAdmins ? ' checked' : ''}> Every active ESL admin</label>
+      <div class="field"><label class="flabel" for="st-always">Always copy these addresses (one per line)</label><textarea id="st-always" placeholder="coordinator@automationghana.com">${esc((s.alwaysCc || []).join('\n'))}</textarea></div>
+      <label class="chk"><input type="checkbox" id="st-wa"${s.whatsapp ? ' checked' : ''}> Also send the quotation on WhatsApp when the number is registered there</label>
+      <div class="field"><label class="flabel" for="st-cc-country">Default country code for numbers typed without one</label><input type="text" id="st-cc-country" value="${esc(s.defaultCountry)}" style="max-width:120px;"></div>
+      <h4 class="h4" style="margin-top:10px;">Insights</h4>
+      <div class="field"><label class="flabel" for="st-dormant">An open order counts as dormant after (days without activity)</label><input type="number" min="1" max="90" id="st-dormant" value="${esc(s.dormantDays)}" style="max-width:120px;"></div>
+      <div id="st-error"></div><div class="btn-row"><button class="primary" id="st-save">Save settings</button></div>
+    </div></div>
+    <div class="console-card"><div class="ch"><h3>What the client receives</h3></div><div class="cb">
+      <div class="field"><label class="flabel" for="st-prev">Preview the signature for</label><select id="st-prev">${ests.map(e => `<option value="${esc(e.id)}"${sel && sel.id === e.id ? ' selected' : ''}>${esc(e.name)}</option>`).join('') || '<option value="">(no estimators yet)</option>'}</select></div>
+      ${signaturePreviewHTML(sel)}
+      <div class="hint-text">The first number is always the company main line. The second is the estimator’s own mobile number from the <b>Staff accounts</b> tab. The real e-mail also carries the social-media icons and banners from your standard signature.</div>
+    </div></div></div>`;
+  $('st-prev').onchange = e => { state.coPreviewEst = e.target.value; renderCoordinator(); };
+  $('st-save').onclick = () => run(async () => {
+    const emails = $('st-always').value.split(/[\s,;]+/).map(x => x.trim().toLowerCase()).filter(Boolean);
+    const bad = emails.find(x => !EMAIL_RE.test(x)), dd = Number($('st-dormant').value), cc = $('st-cc-country').value.replace(/\D/g, '');
+    const err = m => { $('st-error').innerHTML = `<div class="warn-banner">&#9888; ${esc(m)}</div>`; };
+    if(bad) return err(`“${bad}” is not a valid e-mail address.`);
+    if(!(dd >= 1 && dd <= 90)) return err('Dormant days must be between 1 and 90.');
+    if(!cc) return err('Enter a country code such as 233.');
+    $('st-error').innerHTML = '';
+    const next = { ccEstimator: $('st-cc-est').checked, ccSales: $('st-cc-sales').checked, ccAdmins: $('st-cc-admin').checked, alwaysCc: [...new Set(emails)], whatsapp: $('st-wa').checked, dormantDays: Math.round(dd), defaultCountry: cc };
+    await DB.saveSettings(next); settings = Object.assign({}, settings, next); toast('Settings saved.'); renderCoordinator();
+  });
+}
+
+/* ---- the console shell ---- */
+function renderCoordinator(){
+  if(state.role !== 'coordinator') return;
+  document.querySelectorAll('#co-tabs button').forEach(b => b.classList.toggle('active', b.dataset.t === state.coTab));
+  if(!state.casesLoaded && state.coTab === 'insights'){ $('co-body').innerHTML = `<div class="cases-empty">Loading&hellip;</div>`; return; }
+  const sy = window.scrollY;
+  ({ insights: renderCoInsights, staff: renderCoStaff, delivery: renderCoDelivery, settings: renderCoSettings })[state.coTab]();
+  window.scrollTo({ top: sy });
+}
+document.querySelectorAll('#co-tabs button').forEach(b => b.onclick = () => {
+  state.coTab = b.dataset.t; if(b.dataset.t === 'delivery' && state.coPing === null) loadPing(); renderCoordinator();
+});
+
+/* ---------------------------------------------------------------
+   QUOTATION PDF + SENDING (e-mail and WhatsApp) + STAFF ROSTER
+--------------------------------------------------------------- */
+const EMAIL_RE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]+$/;
+let ESTIMATORS = [];     // filled from the database (or the demo list) after sign-in
+
+function applyRoster(rows){
+  STAFF = rows.slice();
+  ESTIMATORS = STAFF.filter(r => r.role === 'estimator' && r.estimatorId)
+    .map(r => ({ id: r.estimatorId, uid: r.id, name: r.name, specialty: r.specialty || 'Estimator', phone: r.phone || '', email: r.email || '', active: r.active !== false }));
+}
+const activeEstimators = () => ESTIMATORS.filter(e => e.active !== false);
+async function refreshRoster(manual){
+  try{ applyRoster(await DB.loadRoster()); renderSessionBox(); refreshActive(); if(manual) toast('Staff list refreshed.'); }
+  catch(e){ console.warn('staff list unavailable', e); if(manual) toast(friendlyError(e)); }
+}
+
+/* ---- PDF ---- */
+/* ---- PDF quotation: a vector PDF built right in the browser. This is the file e-mailed / WhatsApp'd to the client. ---- */
+const PDF_WIDTHS = { r: [278, 278, 355, 556, 556, 889, 667, 191, 333, 333, 389, 584, 278, 333, 278, 278, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 278, 278, 584, 584, 584, 556, 1015, 667, 667, 722, 722, 667, 611, 778, 722, 278, 500, 667, 556, 833, 722, 778, 667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 278, 278, 278, 469, 556, 333, 556, 556, 500, 556, 556, 278, 556, 556, 222, 222, 500, 222, 833, 556, 556, 556, 556, 333, 500, 278, 556, 500, 722, 500, 500, 500, 334, 260, 334, 584, 761, 556, 0, 222, 556, 333, 1000, 556, 556, 333, 1000, 667, 333, 1000, 0, 611, 0, 0, 222, 222, 333, 333, 350, 556, 1000, 333, 1000, 500, 333, 944, 0, 500, 667, 278, 333, 556, 556, 556, 556, 260, 556, 333, 737, 370, 556, 584, 333, 737, 333, 400, 584, 333, 333, 333, 556, 537, 278, 333, 333, 365, 556, 834, 834, 834, 611, 667, 667, 667, 667, 667, 667, 1000, 722, 667, 667, 667, 667, 278, 278, 278, 278, 722, 722, 778, 778, 778, 778, 778, 584, 778, 722, 722, 722, 722, 667, 667, 611, 556, 556, 556, 556, 556, 556, 889, 500, 556, 556, 556, 556, 278, 278, 278, 278, 556, 556, 556, 556, 556, 556, 556, 584, 611, 556, 556, 556, 556, 500, 556, 500], b: [278, 333, 474, 556, 556, 889, 722, 238, 333, 333, 389, 584, 278, 333, 278, 278, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 333, 333, 584, 584, 584, 611, 975, 722, 722, 722, 722, 667, 611, 778, 722, 278, 556, 722, 611, 833, 722, 778, 667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 333, 278, 333, 584, 556, 333, 556, 611, 556, 611, 556, 333, 611, 611, 278, 278, 556, 278, 889, 611, 611, 611, 611, 389, 556, 333, 611, 556, 778, 556, 556, 500, 389, 280, 389, 584, 761, 556, 0, 278, 556, 500, 1000, 556, 556, 333, 1000, 667, 333, 1000, 0, 611, 0, 0, 278, 278, 500, 500, 350, 556, 1000, 333, 1000, 556, 333, 944, 0, 500, 667, 278, 333, 556, 556, 556, 556, 280, 556, 333, 737, 370, 556, 584, 333, 737, 333, 400, 584, 333, 333, 333, 611, 556, 278, 333, 333, 365, 556, 834, 834, 834, 611, 722, 722, 722, 722, 722, 722, 1000, 722, 667, 667, 667, 667, 278, 278, 278, 278, 722, 722, 778, 778, 778, 778, 778, 584, 778, 722, 722, 722, 722, 667, 667, 611, 556, 556, 556, 556, 556, 556, 889, 556, 556, 556, 556, 556, 278, 278, 278, 278, 611, 611, 611, 611, 611, 611, 611, 584, 611, 611, 611, 611, 611, 556, 611, 556] };   // Helvetica / Helvetica-Bold advance widths for character codes 32..255
+const MMPT = 72 / 25.4;
+const CP1252_EXTRA = {0x20AC:0x80,0x201A:0x82,0x0192:0x83,0x201E:0x84,0x2026:0x85,0x2020:0x86,0x2021:0x87,0x02C6:0x88,0x2030:0x89,0x0160:0x8A,0x2039:0x8B,0x0152:0x8C,0x017D:0x8E,0x2018:0x91,0x2019:0x92,0x201C:0x93,0x201D:0x94,0x2022:0x95,0x2013:0x96,0x2014:0x97,0x02DC:0x98,0x2122:0x99,0x0161:0x9A,0x203A:0x9B,0x0153:0x9C,0x017E:0x9E,0x0178:0x9F};
+function pdfCode(ch){ const u = ch.codePointAt(0); if(u < 32) return 32; if(u < 128 || (u >= 160 && u < 256)) return u; return CP1252_EXTRA[u] || 63; }
+function pdfTextWidth(s, bold, size, spacing){
+  const t = PDF_WIDTHS[bold ? 'b' : 'r']; let w = 0, n = 0;
+  for(const ch of String(s)){ w += (t[pdfCode(ch) - 32] || 0); n++; }
+  return w * size / 1000 + (spacing || 0) * n;
+}
+function pdfWrap(s, bold, size, maxW){
+  const out = [];
+  String(s == null ? '' : s).split('\n').forEach(par => {
+    const words = par.split(/ +/); let line = '';
+    const push = () => { out.push(line); line = ''; };
+    words.forEach(word => {
+      let w = word;
+      while(pdfTextWidth(w, bold, size) > maxW){          // a single word wider than the column: break it
+        let k = w.length; while(k > 1 && pdfTextWidth(w.slice(0, k), bold, size) > maxW) k--;
+        if(line){ push(); }
+        out.push(w.slice(0, k)); w = w.slice(k);
+      }
+      const trial = line ? line + ' ' + w : w;
+      if(line && pdfTextWidth(trial, bold, size) > maxW){ push(); line = w; } else line = trial;
+    });
+    push();
+  });
+  return out;
+}
+class MiniPdf {
+  constructor(){ this.W = 595.28; this.H = 841.89; this.pages = []; this.cur = null; this.img = null; this.addPage(); }
+  addPage(){ this.cur = []; this.pages.push(this.cur); return this.pages.length - 1; }
+  col(c){ return c.map(v => (v / 255).toFixed(3)).join(' '); }
+  /* x, y in points from the TOP-LEFT of the page; (x, y) is the text BASELINE */
+  text(x, y, str, o){
+    o = o || {}; const size = o.size || 9, bold = !!o.bold, sp = o.spacing || 0;
+    const w = pdfTextWidth(str, bold, size, sp);
+    if(o.align === 'r') x -= w; else if(o.align === 'c') x -= w / 2;
+    let hex = ''; for(const ch of String(str)) hex += pdfCode(ch).toString(16).padStart(2, '0');
+    const m = o.rot ? `0 1 -1 0 ${x.toFixed(2)} ${(this.H - y).toFixed(2)} Tm` : `1 0 0 1 ${x.toFixed(2)} ${(this.H - y).toFixed(2)} Tm`;
+    this.cur.push(`BT /${bold ? 'F2' : 'F1'} ${size} Tf ${this.col(o.color || [0, 0, 0])} rg ${sp.toFixed(3)} Tc ${m} <${hex}> Tj ET`);
+    if(o.underline) this.line(x, y + 1.6, x + w, y + 1.6, 0.6, o.color || [0, 0, 0]);
+    return w;
+  }
+  rect(x, y, w, h, color){ this.cur.push(`${this.col(color)} rg ${x.toFixed(2)} ${(this.H - y - h).toFixed(2)} ${w.toFixed(2)} ${h.toFixed(2)} re f`); }
+  line(x1, y1, x2, y2, lw, color){ this.cur.push(`${lw} w ${this.col(color)} RG ${x1.toFixed(2)} ${(this.H - y1).toFixed(2)} m ${x2.toFixed(2)} ${(this.H - y2).toFixed(2)} l S`); }
+  image(x, y, w, h){ this.cur.push(`q ${w.toFixed(2)} 0 0 ${h.toFixed(2)} ${x.toFixed(2)} ${(this.H - y - h).toFixed(2)} cm /Im1 Do Q`); }
+  setJpeg(bytes, pw, ph){ this.img = { bytes, pw, ph }; }
+  build(title){
+    const enc = new TextEncoder(), chunks = [], offs = []; let len = 0;
+    const put = d => { const b = typeof d === 'string' ? enc.encode(d) : d; chunks.push(b); len += b.length; };
+    const obj = (n, body) => { offs[n] = len; put(`${n} 0 obj\n`); put(body); put('\nendobj\n'); };
+    const hex = s => Array.from(enc.encode(s)).map(b => b.toString(16).padStart(2, '0')).join('');
+    const hasImg = !!this.img, first = hasImg ? 7 : 6, n = this.pages.length;
+    put('%PDF-1.4\n');
+    obj(1, '<< /Type /Catalog /Pages 2 0 R >>');
+    obj(2, `<< /Type /Pages /Kids [${this.pages.map((_, i) => (first + i * 2 + 1) + ' 0 R').join(' ')}] /Count ${n} >>`);
+    obj(3, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
+    obj(4, '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+    obj(5, `<< /Title <FEFF${Array.from(title || 'Quotation').map(c => c.charCodeAt(0).toString(16).padStart(4, '0')).join('')}> /Producer (ESL Configure and Quote Portal) >>`);
+    if(hasImg){
+      offs[6] = len; put(`6 0 obj\n<< /Type /XObject /Subtype /Image /Width ${this.img.pw} /Height ${this.img.ph} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${this.img.bytes.length} >>\nstream\n`);
+      put(this.img.bytes); put('\nendstream\nendobj\n');
+    }
+    this.pages.forEach((ops, i) => {
+      const body = enc.encode(ops.join('\n'));
+      offs[first + i * 2] = len; put(`${first + i * 2} 0 obj\n<< /Length ${body.length} >>\nstream\n`); put(body); put('\nendstream\nendobj\n');
+      obj(first + i * 2 + 1, `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${this.W} ${this.H}] /Resources << /Font << /F1 3 0 R /F2 4 0 R >>${hasImg ? ' /XObject << /Im1 6 0 R >>' : ''} >> /Contents ${first + i * 2} 0 R >>`);
+    });
+    const total = first + n * 2, xref = len;
+    put(`xref\n0 ${total}\n0000000000 65535 f \n`);
+    for(let k = 1; k < total; k++) put(String(offs[k]).padStart(10, '0') + ' 00000 n \n');
+    put(`trailer\n<< /Size ${total} /Root 1 0 R /Info 5 0 R >>\nstartxref\n${xref}\n%%EOF\n`);
+    const out = new Uint8Array(len); let o = 0; chunks.forEach(c => { out.set(c, o); o += c.length; });
+    return out;
+  }
+}
+
+/* The quotation layout (A4) — mirrors the printable HTML version of the quotation. */
+function renderQuotePdf(s, logo){
+  const P = new MiniPdf(), W = P.W, H = P.H, mm = v => v * MMPT;
+  const GREY = [90, 96, 104], INK = [34, 34, 34], BLUE = [59, 111, 179];
+  const L = mm(12.7), R = W - mm(12.7), CW = R - L;
+  if(logo){ P.setJpeg(logo.bytes, logo.w, logo.h); P.image(L, mm(10), mm(94), mm(94) * logo.h / logo.w); }
+  else P.text(L, mm(22), 'Process and Plant Automation', { size: 15, bold: true, color: GREY });
+  // a block of lines laid out like CSS line-height 1.38
+  const block = (x, top, lines, size, lh, width, o) => {
+    let y = top; (o && o.bold) || 0;
+    lines.forEach(l => pdfWrap(l, false, size, width).forEach(t => { P.text(x, y + lh * 0.5 + size * 0.34, t, { size, color: INK }); y += lh; }));
+    return y;
+  };
+  block(L, mm(44), s.custLines, 9, 9 * 1.38, mm(104));
+  P.rect(mm(120), mm(9), mm(16.4), mm(73), GREY);
+  { const sz = 11.5, sp = sz * 0.42, tw = pdfTextWidth('QUOTATION', false, sz, sp) - sp;
+    P.text(mm(120 + 8.2) + sz * 0.36, mm(9 + 36.5) + tw / 2, 'QUOTATION', { size: sz, color: [255, 255, 255], spacing: sp, rot: true }); }
+  block(mm(138), mm(19.5), ['Process and Plant Automation', 'The Automation Hub', 'Spintex Road', 'Accra P.O. Box SR 95', 'Ghana', '+233 23 370 0891/ +233 55 005 5511'], 9, 9 * 1.38, mm(62));
+  [['Quote No.', s.quoteNo], ['Quote Date', s.qDate], ['Currency', 'GHS']].forEach(([k, v], i) => {
+    const yc = mm(53 + i * 5.6 + 2.8);
+    P.text(mm(138.4), yc + 3.1, k, { size: 9, bold: true, color: INK }); P.text(mm(138.4 + 30), yc + 3.1, v, { size: 9, color: INK });
+  });
+
+  // ---- table
+  const pct = [5.5, 11, 38.5, 11, 8.5, 12.5, 13], cw = pct.map(p => CW * p / 100), cx = []; cw.reduce((a, w, i) => (cx[i] = a, a + w), L);
+  const pad = mm(1.5), hh = mm(6.5);
+  let y = mm(88.4);
+  P.rect(L, y, CW, hh, GREY);
+  ['No', 'Item Code', 'Description', 'Lead Time', 'Qty', 'Unit Price', 'Total'].forEach((t, i) => {
+    const right = i >= 4;
+    P.text(right ? cx[i] + cw[i] - pad : cx[i] + pad, y + hh / 2 + 2.8, t, { size: 8, bold: true, color: [255, 255, 255], align: right ? 'r' : 'l' });
+  });
+  y += hh;
+  const fs = 8.6, lh = fs * 1.4, rowTop = mm(3.2), rowBot = mm(3.4);
+  const descLines = []; s.descLines.forEach(d => pdfWrap(d, false, fs, cw[2] - 2 * pad).forEach(t => descLines.push(t)));
+  const leadLines = pdfWrap(s.lead || '', false, fs, cw[3] - 2 * pad);
+  const nLines = Math.max(descLines.length, leadLines.length, 2);
+  const rowH = rowTop + nLines * lh + rowBot;
+  const base = k => y + rowTop + lh * 0.5 + fs * 0.34 + k * lh;
+  P.text(cx[0] + pad, base(0), '1', { size: fs, color: INK });
+  descLines.forEach((t, k) => P.text(cx[2] + pad, base(k), t, { size: fs, color: INK }));
+  leadLines.forEach((t, k) => P.text(cx[3] + pad, base(k), t, { size: fs, color: INK }));
+  P.text(cx[4] + cw[4] - pad, base(0), '1.00', { size: fs, color: INK, align: 'r' }); P.text(cx[4] + cw[4] - pad, base(1), 'Units', { size: fs, color: INK, align: 'r' });
+  P.text(cx[5] + cw[5] - pad, base(0), s.T.untaxedS, { size: fs, color: INK, align: 'r' });
+  { let tt = 'GH¢ ' + s.T.untaxedS; if(pdfTextWidth(tt, false, fs) > cw[6] - pad) tt = s.T.untaxedS; P.text(cx[6] + cw[6] - pad, base(0), tt, { size: fs, color: INK, align: 'r' }); }
+  P.line(L, y + rowH, R, y + rowH, 1.3, [51, 51, 51]);
+  y += rowH + mm(1.5);
+
+  // ---- totals
+  [['Untaxed Amount', s.T.untaxedS], ['NHIL', s.T.nhilS], ['GETFund', s.T.getfundS], ['VAT', s.T.vatS], ['Total', s.T.totalS, true]].forEach(([k, v, g]) => {
+    const rh = mm(7.4), yb = y + rh / 2 + 3.1, c = g ? BLUE : INK;
+    P.text(L + mm(94.5), yb, k, { size: 9, bold: !!g, color: c }); P.text(R, yb, 'GH¢ ' + v, { size: 9, bold: !!g, color: c, align: 'r' });
+    y += rh;
+  });
+
+  // ---- special instructions (flows onto a second page if the notes are long)
+  const bottom = H - mm(24);
+  const ensure = h => { if(y + h > bottom){ P.addPage(); y = mm(16); } };
+  y += mm(11); ensure(mm(30));
+  P.text(L, y + 8.8 * 0.8, 'Special Instructions :', { size: 8.8, bold: true, color: INK, underline: true });
+  y += 8.8 * 1.4 + mm(5);
+  const ilh = 8.8 * 1.5, put = (t, bold) => pdfWrap(t, !!bold, 8.8, CW).forEach(line => { ensure(ilh); P.text(L, y + ilh * 0.5 + 8.8 * 0.34, line, { size: 8.8, color: INK }); y += ilh; });
+  [['Validity', s.terms.validity], ['Lead Time', s.terms.leadTime], ['Delivery', s.terms.delivery], ['Transport Cost (Excluded from total cost)', s.terms.transport], ['Payment', s.terms.payment]].forEach(([k, v]) => put(`${k} : ${v || ''}`));
+  y += mm(5);
+  put('Availability is subject to prior sales'); put('Client must accept partial deliveries for an Order from this Quote, where applicable');
+  y += mm(5);
+  put('Other Instructions :'); if(s.notes) put(s.notes);
+
+  // ---- footer on every page
+  const n = P.pages.length;
+  P.pages.forEach((_, i) => {
+    P.cur = P.pages[i];
+    P.text(L, H - mm(11.5), 'Prepared By:', { size: 7.5, bold: true, color: INK }); P.text(L + pdfTextWidth('Prepared By: ', true, 7.5), H - mm(11.5), s.preparedBy || '', { size: 7.5, color: INK });
+    P.text(R - pdfTextWidth('Approved By:', true, 7.5), H - mm(11.5), 'Approved By:', { size: 7.5, bold: true, color: INK });
+    P.text(W / 2, H - mm(5), `Page ${i + 1} of ${n}`, { size: 7, color: [119, 119, 119], align: 'c' });
+  });
+  return P.build('Quotation ' + s.quoteNo);
+}
+
+
+let logoCache;
+async function loadLogoJpeg(){
+  if(logoCache !== undefined) return logoCache;
+  try{
+    const img = new Image(); img.src = ASSETS.ppa; await img.decode();
+    const cv = document.createElement('canvas'); cv.width = img.naturalWidth; cv.height = img.naturalHeight;
+    const g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, cv.width, cv.height); g.drawImage(img, 0, 0);
+    const b64 = cv.toDataURL('image/jpeg', 0.92).split(',')[1];
+    logoCache = { bytes: Uint8Array.from(atob(b64), ch => ch.charCodeAt(0)), w: cv.width, h: cv.height };
+  }catch(e){ console.warn('logo not embedded in the PDF', e); logoCache = null; }
+  return logoCache;
+}
+function quotePdfSpec(c){
+  const hist = c.quoteHistory || [], last = hist[hist.length - 1], ct = c.contact || {}, qt = c.quoteTerms || {}, T = quoteTotals(c);
+  return {
+    quoteNo: c.caseNo + (hist.length > 1 ? '-R' + hist.length : ''),
+    qDate: new Date(last ? last.t : Date.now()).toLocaleDateString('en-GB'),
+    custLines: [ct.company || ct.fullName, ct.company ? 'Attn: ' + ct.fullName : '', ct.location, ct.phone ? 'Tel: ' + ct.phone : '', ct.email || '', 'Tax ID:'].filter(Boolean),
+    descLines: quoteDescription(c), lead: qt.leadTime || '',
+    T: { untaxedS: fmtNum(T.untaxed), nhilS: fmtNum(T.nhil), getfundS: fmtNum(T.getfund), vatS: fmtNum(T.vat), totalS: fmtNum(T.total) },
+    terms: { validity: qt.validity || '', leadTime: qt.leadTime || '', delivery: qt.delivery || '', transport: qt.transport || '', payment: qt.payment || '' },
+    notes: c.quoteNotes || '', preparedBy: (last && last.by) || '',
+  };
+}
+async function makeQuotePdf(c){ return renderQuotePdf(quotePdfSpec(c), await loadLogoJpeg()); }
+function bytesToB64(bytes){ let s = ''; for(let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000)); return btoa(s); }
+function pdfFileName(c){ const n = (c.quoteHistory || []).length || 1; return `ESL-Quotation-${c.caseNo}-Rev${n}.pdf`; }
+async function downloadQuotePdf(c){
+  const bytes = await makeQuotePdf(c);
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([bytes], { type: 'application/pdf' })); a.download = pdfFileName(c);
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 3000);
+}
+
+/* ---- who would receive it (used by the demo; the live function works this out on the server) ---- */
+function planRecipients(c, cfg, me){
+  const ct = c.contact || {}, to = String(ct.email || '').trim().toLowerCase(), cc = new Map();
+  const add = (e, why) => { const v = String(e || '').trim().toLowerCase(); if(EMAIL_RE.test(v) && v !== to && !cc.has(v)) cc.set(v, why); };
+  (ct.ccEmails || []).forEach(e => add(e, 'Also on the request'));
+  add(me && me.email, 'Issuing estimator');
+  const asg = ESTIMATORS.find(e => e.id === c.assignedEstimatorId); if(cfg.ccEstimator && asg && asg.active !== false) add(asg.email, 'Assigned estimator');
+  const owner = STAFF.find(p => p.id === c.ownerUid);
+  if(owner && owner.role === 'sales'){ if(cfg.ccSales) add(owner.email, 'Sales (logged the request)'); } else add((owner && owner.email) || c.ownerEmail, 'Account holder');
+  if(cfg.ccAdmins) STAFF.filter(p => p.role === 'admin' && p.active !== false).forEach(p => add(p.email, 'ESL admin'));
+  (cfg.alwaysCc || []).forEach(e => add(e, 'Always copied'));
+  return { to: EMAIL_RE.test(to) ? to : null, cc: [...cc].map(([email, why]) => ({ email, why })) };
+}
+function waDigits(raw, country){
+  let d = String(raw || '').replace(/[^\d+]/g, ''); const plus = d.startsWith('+'); d = d.replace(/\D/g, '');
+  if(!d) return null;
+  if(!plus){ if(d.startsWith('00')) d = d.slice(2); else if(d.startsWith('0')) d = country + d.slice(1); else if(d.length <= 9) d = country + d; }
+  return d.length >= 9 && d.length <= 15 ? d : null;
+}
+const waLink = (c, country) => {
+  const d = waDigits(c.contact && c.contact.phone, country || settings.defaultCountry || '233'); if(!d) return null;
+  return `https://wa.me/${d}?text=` + encodeURIComponent(`Hello ${(c.contact && c.contact.fullName) || ''}\nHere is the quotation for your requested panel. Feel free to reach out for any clarification.`);
+};
+
+/* ---- press "Issue quotation" -> PDF -> e-mail + WhatsApp ---- */
+async function sendQuoteOut(c){
+  const bytes = await makeQuotePdf(c);
+  const rev = (c.quoteHistory || []).length || 1;
+  return DB.sendQuote({ caseNo: c.caseNo, rev, pdfBase64: bytesToB64(bytes), panelName: c.panelName, _case: c });
+}
+function deliverySummaryText(res){
+  const e = res.email || {}, w = res.whatsapp || {};
+  if(e.status === 'simulated' || w.status === 'simulated') return 'Quotation PDF prepared for sending by e-mail and WhatsApp (demo mode: not actually sent).';
+  const parts = [];
+  if(e.status === 'sent') parts.push('e-mailed');
+  if(w.status === 'sent') parts.push('sent on WhatsApp');
+  return parts.length ? `Quotation PDF ${parts.join(' and ')} to the client.` : 'Quotation issued — your estimator will send the PDF to you directly.';
+}
+function deliveryToast(res){
+  const e = res.email || {}, w = res.whatsapp || {};
+  if(e.status === 'simulated') return 'Demo: the quotation PDF was prepared; nothing was actually sent.';
+  if(e.status === 'sent' && w.status === 'sent') return 'Quotation sent by e-mail and WhatsApp.';
+  if(e.status === 'sent') return 'Quotation e-mailed. WhatsApp: ' + (DELIV_LABEL[w.status] || w.status || 'not sent').toLowerCase() + '.';
+  if(w.status === 'sent') return 'Quotation sent on WhatsApp, but the e-mail failed: ' + (e.error || DELIV_LABEL[e.status]);
+  return 'Quotation issued, but it could not be sent: ' + (e.error || DELIV_LABEL[e.status] || 'unknown problem') + '.';
+}
+function deliveryBoxHTML(c){
+  if(c.quoteAmount == null) return '';
+  const rows = dispatchLog.filter(d => d.caseNo === c.caseNo).sort((a, b) => b.at - a.at);
+  const d = rows[0], busy = state.sendingCase === c.caseNo;
+  let body;
+  if(busy) body = `<div class="info-banner" style="margin:0;">&#9203; <span>Preparing the PDF and sending it&hellip;</span></div>`;
+  else if(!d) body = `<div class="hint-text">Not sent yet. When you press <b>Issue quotation</b> the PDF goes to the client by e-mail (copying the stakeholders) and by WhatsApp.</div>`;
+  else {
+    const e = d.email || {}, w = d.whatsapp || {};
+    const ccs = (e.cc || []);
+    body = `<div class="deliv-line"><b>E-mail</b> ${delivChip(e.status)}<div class="hint-text">${e.to ? 'To ' + esc(e.to) : ''}${ccs.length ? ' · copied ' + ccs.map(x => esc(x.email)).join(', ') : ''}</div>${e.error ? `<div class="alertline">${esc(e.error)}</div>` : ''}${e.warning ? `<div class="alertline">${esc(e.warning)}</div>` : ''}</div>
+      <div class="deliv-line"><b>WhatsApp</b> ${delivChip(w.status)}<div class="hint-text">${w.to ? esc(w.to) : ''}</div>${w.error && w.status !== 'disabled' ? `<div class="alertline">${esc(w.error)}</div>` : ''}</div>
+      <div class="hint-text">Revision ${esc(d.rev)} · ${esc(fmtDT(d.at))}${d.by ? ' · ' + esc(d.by) : ''}</div>`;
+  }
+  const wl = waLink(c);
+  return `<div class="deliv-box"><h4 class="h4">Delivery to the client</h4>${body}
+    <div class="btn-row"><button class="ghost small" id="btn-resend-quote"${busy ? ' disabled' : ''}>${d ? 'Send again' : 'Send now'}</button><button class="ghost small" id="btn-pdf-quote">Download PDF</button>${wl && (!d || (d.whatsapp || {}).status !== 'sent') ? `<a class="ghost small linkbtn" href="${wl}" target="_blank" rel="noopener">Open WhatsApp chat</a>` : ''}</div></div>`;
+}
+
+/* ---------------------------------------------------------------
    BACKEND #1 — DEMO (in-memory)
 --------------------------------------------------------------- */
 function makeDemoDB(){
@@ -1201,6 +2134,12 @@ function makeDemoDB(){
     logL.forEach(cb => cb(clone(log)));
   };
   const find = no => store.find(c => c.caseNo === no);
+  const staff = clone(DEMO_STAFF_SEED);
+  let cfg = Object.assign({}, DEFAULT_SETTINGS);
+  const evs = [], disp = [], evL = new Set(), dpL = new Set();
+  const addEv = (no, kind, extra) => evs.push(Object.assign({ caseNo: no, t: Date.now(), kind }, extra || {}));
+  const genPassword = () => { const a = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'; let p = ''; for(let i = 0; i < 10; i++) p += a[Math.floor(Math.random() * a.length)]; return p + '#7'; };
+  const slug = n => (n.trim().split(/\s+/)[0] || 'est').toLowerCase().replace(/[^a-z0-9]/g, '') || 'est';
   const appendTo = (c, appends) => Object.entries(appends || {}).forEach(([k, items]) => {
     c[k] = c[k] || []; (items || []).forEach(i => c[k].push(i));
   });
@@ -1228,15 +2167,21 @@ function makeDemoDB(){
       seq += 1;
       record.caseNo = `ESL-${new Date().getFullYear()}-${String(seq).padStart(5, '0')}`;
       store.unshift(clone(record));
+      addEv(record.caseNo, 'created', { stage: 'Case Received' }); evL.forEach(cb => cb(clone(evs)));
       emit();
       return record.caseNo;
     },
     async updateCase(caseNo, patch, appends){
       const c = find(caseNo); if(!c) throw new Error('Case not found');
       if(Array.isArray(appends)) appends = { timeline: appends };
+      const oldStatus = c.status, oldQ = (c.quoteHistory || []).length, hadAcc = c.acceptedAt != null;
       Object.assign(c, clone(patch || {}));
       appendTo(c, clone(appends || {}));
       c.updatedAt = Date.now();
+      if(c.status !== oldStatus) addEv(caseNo, 'stage', { stage: c.status });
+      if((c.quoteHistory || []).length > oldQ) addEv(caseNo, 'quote', { amount: c.quoteHistory[c.quoteHistory.length - 1].amount });
+      if(!hadAcc && c.acceptedAt != null) addEv(caseNo, 'accepted', { amount: c.acceptedAmount != null ? c.acceptedAmount : c.quoteAmount });
+      evL.forEach(cb => cb(clone(evs)));
       emit();
     },
     async addCallNote(caseNo, note, tl){
@@ -1247,6 +2192,42 @@ function makeDemoDB(){
     },
     async addFile(meta, dataUrl){ data[meta.id] = dataUrl; files.push(clone(meta)); emit(); },
     async getFileData(id){ return data[id] || null; },
+    async loadRoster(){ return clone(staff); },
+    subscribeEvents(cb){ evL.add(cb); setTimeout(() => cb(clone(evs)), 0); return () => evL.delete(cb); },
+    subscribeDispatch(cb){ dpL.add(cb); setTimeout(() => cb(clone(disp)), 0); return () => dpL.delete(cb); },
+    async loadSettings(){ return clone(cfg); },
+    async saveSettings(v){ cfg = Object.assign({}, cfg, clone(v)); },
+    async pingDelivery(){ return { demo: true }; },
+    async sendQuote(p){
+      const c = p._case, me = staff.find(s => s.id === (state.profile && state.profile.uid));
+      const plan = planRecipients(c, cfg, me), wa = waDigits(c.contact && c.contact.phone, cfg.defaultCountry);
+      const email = { status: plan.to ? 'simulated' : 'failed', to: plan.to, cc: plan.cc, provider: 'demo' };
+      if(!plan.to) email.error = 'The request has no valid client e-mail address.';
+      const whatsapp = !cfg.whatsapp ? { status: 'disabled', to: null } : wa ? { status: 'simulated', to: '+' + wa } : { status: 'failed', to: null, error: 'The phone number on the request is missing or not valid.' };
+      const row = { id: uid8(), caseNo: c.caseNo, rev: p.rev, at: Date.now(), by: state.profile ? state.profile.name : '', email, whatsapp };
+      disp.unshift(row); dpL.forEach(cb => cb(clone(disp)));
+      return { ok: true, id: row.id, email, whatsapp };
+    },
+    async manageStaff(p){
+      const find = id => staff.find(s => s.id === id);
+      if(p.action === 'create'){
+        const email = String(p.email || '').trim().toLowerCase();
+        if(staff.some(s => s.email === email)) throw new Error('That e-mail already belongs to a staff member.');
+        const row = { id: 'demo-' + uid8(), name: p.name, role: p.role, estimatorId: null, specialty: p.specialty || '', phone: p.phone || '', email, active: true };
+        if(p.role === 'estimator'){ let b = slug(p.name), n = 2, id = b; while(staff.some(s => s.estimatorId === id)) id = b + (n++); row.estimatorId = id; }
+        staff.push(row); return { ok: true, profile: clone(row), password: p.password || genPassword() };
+      }
+      const t = find(p.id); if(!t) throw new Error('Staff member not found.');
+      if(p.action === 'update'){
+        if(p.name !== undefined) t.name = p.name; if(p.phone !== undefined) t.phone = p.phone; if(p.specialty !== undefined) t.specialty = p.specialty;
+        if(p.role && p.role !== t.role){ t.role = p.role; if(p.role === 'estimator' && !t.estimatorId) t.estimatorId = slug(t.name) + '2'; }
+        if(t.role === 'estimator' && !t.phone) throw new Error('Estimators need a mobile number.');
+        return { ok: true, profile: clone(t) };
+      }
+      if(p.action === 'set_active'){ t.active = p.active === true; return { ok: true, profile: clone(t) }; }
+      if(p.action === 'reset_password') return { ok: true, password: p.password || genPassword() };
+      throw new Error('Unknown action.');
+    },
     async deleteFile(id){
       const i = files.findIndex(f => f.id === id);
       if(i > -1) files.splice(i, 1);
@@ -1288,12 +2269,34 @@ async function makeSupabaseDB(){
     // right after sign-up the profile row is written by a database trigger — retry briefly
     for(let i = 0; i < 4; i++){
       try{
-        const data = unwrap(await sb.from('profiles').select('name,email,role,company,location,estimator_id').eq('id', uid).maybeSingle());
+        let data;
+        try{ data = unwrap(await sb.from('profiles').select('name,email,role,company,location,estimator_id,phone,active').eq('id', uid).maybeSingle()); }
+        catch(e1){ data = unwrap(await sb.from('profiles').select('name,email,role,company,location,estimator_id').eq('id', uid).maybeSingle()); }   // before the v2 upgrade has been run
         if(data) return data;
       }catch(e){ console.error('profile read failed', e); }
       await new Promise(r => setTimeout(r, 600));
     }
     return null;
+  }
+
+  // PostgREST returns at most 1000 rows per request, so read big tables in pages
+  async function pageAll(make){
+    let out = [], from = 0;
+    for(;;){ const rows = unwrap(await make().range(from, from + 999)); out = out.concat(rows); if(rows.length < 1000) return out; from += 1000; }
+  }
+  // call one of the Edge Functions (send-quote, manage-staff) as the signed-in user
+  const FN_BASE = String(SUPABASE_URL).trim().replace(/\/+$/, '').replace(/\/(rest|auth|realtime|storage)\/v1.*$/, '');
+  async function callFn(name, body){
+    const { data } = await sb.auth.getSession();
+    const tok = data && data.session && data.session.access_token;
+    if(!tok){ const e = new Error('Your session has expired — please sign in again.'); e.code = 'PGRST301'; throw e; }
+    let r;
+    try{ r = await fetch(`${FN_BASE}/functions/v1/${name}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + tok, apikey: String(SUPABASE_ANON_KEY).trim() }, body: JSON.stringify(body) }); }
+    catch(e){ throw new Error('Network problem — check your connection.'); }
+    const j = await r.json().catch(() => ({}));
+    if(r.status === 404 && !j.error) throw new Error(`The “${name}” function is not deployed yet — see SUPABASE_SETUP.md.`);
+    if(!r.ok){ const e = new Error(j.error || j.message || `Request failed (${r.status})`); e.code = 'fn'; throw e; }
+    return j;
   }
 
   // fetch a list, then refetch whenever the table changes (Realtime) — plus a slow safety poll
@@ -1339,7 +2342,7 @@ async function makeSupabaseDB(){
           if(currentId !== user.id) return;           // signed out while loading
           if(!prof || !ROLE_LABEL[prof.role]) return cb({ uid: user.id, error: 'noprofile' });
           cb({ uid: user.id, email: user.email, name: prof.name || user.email, role: prof.role,
-               estimatorId: prof.estimator_id || null, company: prof.company || '', location: prof.location || '' });
+               estimatorId: prof.estimator_id || null, company: prof.company || '', location: prof.location || '', phone: prof.phone || '', active: prof.active !== false });
         }, 0);
       });
     },
@@ -1360,11 +2363,11 @@ async function makeSupabaseDB(){
     async signOut(){ await sb.auth.signOut(); },
 
     subscribeCases(opts, cb){
-      return watch('cases', async () => {
-        let q = sb.from('cases').select('data').order('created_at', { ascending: false });
+      return watch('cases', async () => (await pageAll(() => {
+        let q = sb.from('cases').select('data').order('created_at', { ascending: false }).order('case_no');
         if(!opts.all) q = q.eq('owner_uid', opts.ownerUid);
-        return unwrap(await q).map(r => r.data);
-      }, cb, 'cases');
+        return q;
+      })).map(r => r.data), cb, 'cases');
     },
     subscribeFiles(opts, cb){
       return watch('case_files', async () => {
@@ -1378,6 +2381,22 @@ async function makeSupabaseDB(){
         unwrap(await sb.from('call_log').select('data').order('t', { ascending: false }).limit(50)).map(r => r.data),
         cb, 'call log');
     },
+    async loadRoster(){
+      return unwrap(await sb.rpc('staff_roster')).map(r => ({ id: r.id, name: r.name, role: r.role, estimatorId: r.estimator_id, specialty: r.specialty || '', phone: r.phone || '', email: r.email || '', active: r.active !== false }));
+    },
+    subscribeEvents(cb){
+      return watch('cases', async () => (await pageAll(() => sb.from('case_events').select('case_no,t,kind,stage,amount').order('id')))
+        .map(e => ({ caseNo: e.case_no, t: new Date(e.t).getTime(), kind: e.kind, stage: e.stage, amount: e.amount == null ? null : Number(e.amount) })), cb, 'history');
+    },
+    subscribeDispatch(cb){
+      return watch('quote_dispatch', async () => unwrap(await sb.from('quote_dispatch').select('*').order('created_at', { ascending: false }).limit(300))
+        .map(r => ({ id: r.id, caseNo: r.case_no, rev: r.rev, at: new Date(r.created_at).getTime(), by: r.sent_by_name, email: r.email || {}, whatsapp: r.whatsapp || {} })), cb, 'delivery log');
+    },
+    async loadSettings(){ const row = unwrap(await sb.from('app_settings').select('value').eq('key', 'general').maybeSingle()); return row ? row.value : null; },
+    async saveSettings(v){ unwrap(await sb.from('app_settings').upsert({ key: 'general', value: v, updated_at: new Date().toISOString() })); },
+    async pingDelivery(){ return callFn('send-quote', { ping: true }); },
+    async sendQuote(p){ return callFn('send-quote', { caseNo: p.caseNo, rev: p.rev, pdfBase64: p.pdfBase64, panelName: p.panelName }); },
+    async manageStaff(p){ return callFn('manage-staff', p); },
     async createCase(record){
       return unwrap(await sb.rpc('create_case', { p_record: record }));   // returns the new case number
     },
@@ -1417,6 +2436,7 @@ async function boot(){
     return;
   }
   $('demo-banner').style.display = LIVE_ACTIVE ? 'none' : 'flex';
+  if(!LIVE_ACTIVE){ try{ applyRoster(await DB.loadRoster()); }catch(e){} }
   setAuthMode('signin');
   updateStaffUI();
   DB.onAuth(handleAuth);
@@ -1430,6 +2450,7 @@ function showFatal(msg){
 $('btn-continue-demo').onclick = () => {
   DB = makeDemoDB();
   LIVE_ACTIVE = false;
+  DB.loadRoster().then(applyRoster);
   $('demo-banner').style.display = 'flex';
   $('login-fatal').style.display = 'none';
   updateStaffUI();
@@ -1442,6 +2463,10 @@ function handleAuth(profile){
     authError = { page: state.loginPage, msg: "Your account exists but has no role assigned yet. Ask TAGG to finish setting it up, then sign in again." };
     DB.signOut();
     return;
+  }
+  if(profile.active === false){
+    authError = { page: state.loginPage, msg: 'This account has been deactivated. Please contact the TAGG coordinator.' };
+    DB.signOut(); return;
   }
   const intent = state.loginIntent;
   state.loginIntent = null;
@@ -1459,7 +2484,7 @@ function handleAuth(profile){
 function teardown(){
   unsubs.forEach(u => { try{ u(); }catch(e){} });
   unsubs = [];
-  cases = []; caseFiles = []; callLog = [];
+  cases = []; caseFiles = []; callLog = []; events = []; dispatchLog = [];
   dataCache.clear();
   state.casesLoaded = false;
 }
@@ -1498,9 +2523,13 @@ function enterApp(profile){
     salesFilter: 'all', salesOpenCase: null, salesStage: null, salesStageCase: null,
     estFilter: 'all', estOpenCaseNo: null, estDraft: null, desDraft: null, designerFilter: 'all', designerOpenCase: null, designerTab: 'notes',
     adminSelectedCase: null, simCall: null,
+    coTab: 'insights', coSampleData: null, coPing: null, coEditId: null, coCreated: null, coBusy: false, sendingCase: null,
   });
   renderSessionBox();
   showTopView(profile.role);
+  refreshRoster();
+  { const iv = setInterval(() => refreshRoster(), 300000); unsubs.push(() => clearInterval(iv)); }
+  if(profile.role !== 'client'){ DB.loadSettings().then(v => { if(v){ settings = Object.assign({}, DEFAULT_SETTINGS, v); if(state.role === 'coordinator') renderCoordinator(); } }).catch(() => {}); }
 
   const subs = opts => {
     unsubs.push(DB.subscribeCases(opts, onCases));
@@ -1517,6 +2546,7 @@ function enterApp(profile){
     showClientSub('salesreqs'); renderSalesList();
   } else if(profile.role === 'estimator'){
     subs({ all: true });
+    unsubs.push(DB.subscribeDispatch(l => { dispatchLog = l; refreshActive(); }));
     renderEstimatorList(); showEstimatorListView();
   } else if(profile.role === 'designer'){
     subs({ all: true });
@@ -1525,6 +2555,11 @@ function enterApp(profile){
     unsubs.push(DB.subscribeCases({ all: true }, onCases));
     unsubs.push(DB.subscribeCallLog(l => { callLog = l; renderAdminCallLog(); }));
     renderAdmin();
+  } else if(profile.role === 'coordinator'){
+    unsubs.push(DB.subscribeCases({ all: true }, onCases));
+    unsubs.push(DB.subscribeEvents(l => { events = l; refreshActive(); }));
+    unsubs.push(DB.subscribeDispatch(l => { dispatchLog = l; refreshActive(); }));
+    renderCoordinator();
   }
 }
 
@@ -1545,6 +2580,8 @@ function refreshActive(){
   } else if(state.role === 'sales'){
     if(state.clientSub === 'salesreqs') renderSalesList();
     if(state.clientSub === 'salesdetail' && !typingIn($('client-sub-salesdetail'))) renderSalesDetail();
+  } else if(state.role === 'coordinator'){
+    if(!typingIn($('co-body'))) renderCoordinator();
   } else if(state.role === 'admin'){
     renderAdminIncoming(); renderAdminEstimators(); renderAdminQueueHealth(); refreshAdminLookup();
   } else if(state.role === 'estimator'){
@@ -1570,7 +2607,7 @@ function renderSessionBox(){
 }
 function showTopView(role){
   const view = role === 'sales' ? 'client' : role;
-  ['loading', 'login', 'client', 'admin', 'estimator', 'designer'].forEach(v => $('view-' + v).classList.toggle('active', v === view));
+  ['loading', 'login', 'client', 'admin', 'estimator', 'designer', 'coordinator'].forEach(v => $('view-' + v).classList.toggle('active', v === view));
 }
 
 /* ---- client sign-in / sign-up (live mode) ---- */
@@ -1641,6 +2678,7 @@ const DEMO_STAFF = {
   admin:    { uid:'demo-admin',    role:'admin',    name:'Ama B. (Front Desk)' },
   sales:    { uid:'demo-sales',    role:'sales',    name:'Akosua Boateng' },
   designer: { uid:'demo-designer', role:'designer', name:'Kojo Annan' },
+  coordinator: { uid:'demo-coord', role:'coordinator', name:'Efua Mensah' },
 };
 async function submitStaff(){
   if(!staffPortfolio){ showStaffError('Choose your portfolio first.'); return; }
@@ -1648,7 +2686,7 @@ async function submitStaff(){
     if(staffPortfolio === 'estimator'){
       $('login-staff').style.display = 'none';
       $('login-estimator-pick').style.display = 'block';
-      $('estimator-picker-list').innerHTML = ESTIMATORS.map(e =>
+      $('estimator-picker-list').innerHTML = activeEstimators().map(e =>
         `<button class="picker-item" data-est="${esc(e.id)}"><div><div class="pn">${esc(e.name)}</div><div class="ps">${esc(e.specialty)}</div></div></button>`).join('');
       document.querySelectorAll('.picker-item').forEach(b => b.onclick = () => {
         const e = ESTIMATORS.find(x => x.id === b.dataset.est);
@@ -1867,7 +2905,7 @@ const KB = n => Math.max(1, Math.round((n || 0) / 1024)) + ' KB';
 const fmtDay = s => s ? new Date(s + 'T00:00:00').toLocaleDateString([], { day:'2-digit', month:'short', year:'numeric' }) : '—';
 const isProject = c => ((c.contact && c.contact.orderType) || '').startsWith('Installation');
 const stageIdx = c => STATUS_STAGES.indexOf(c.status);
-const estOf = id => ESTIMATORS.find(e => e.id === id);
+const estOf = id => ESTIMATORS.find(e => e.id === id);   // includes deactivated estimators, so old cases still show a name
 const filesOf = (caseNo, kind) => caseFiles.filter(f => f.caseNo === caseNo && (!kind || f.kind === kind)).sort((a, b) => a.createdAt - b.createdAt);
 const dataCache = new Map();
 
@@ -2164,7 +3202,7 @@ function quoteStageHTML(c, idx, mode){
     <div class="meta">${c.quoteTerms && c.quoteTerms.taxIncl ? 'Includes NHIL, GETFund levy and VAT.' : 'Before NHIL, GETFund levy and VAT — taxes are itemised on the printed quotation.'}</div>
     ${last ? `<div class="meta">Issued ${esc(fmtDT(last.t))}${last.by ? ' by ' + esc(last.by) : ''}</div>` : ''}
     ${c.quoteNotes ? `<div style="white-space:pre-wrap; overflow-wrap:anywhere;">${esc(c.quoteNotes)}</div>` : ''}
-    <div class="btn-row"><button class="ghost small" data-print-quote="${esc(c.caseNo)}">Print / save quotation (PDF)</button>
+    <div class="btn-row"><button class="ghost small" data-pdf-quote="${esc(c.caseNo)}">Download PDF</button><button class="ghost small" data-print-quote="${esc(c.caseNo)}">Print</button>
     ${mode === 'client' && c.status === 'Quotation Issued' ? `<button class="primary small" data-gostage="3">Respond to this price &rarr;</button>` : ''}</div></div>`;
   if(docs.length) h += `<div><h4>Quotation documents</h4>${docs.map(f => fileRowHTML(f, false)).join('')}</div>`;
   if(hist.length > 1) h += `<div><h4>Revision history</h4>${hist.slice().reverse().map(q =>
@@ -2244,6 +3282,7 @@ function clientStagePanelHTML(c, i, mode){
 }
 function bindStagePanel(root, c, mode, goStage){
   root.querySelectorAll('[data-print-quote]').forEach(b => b.onclick = () => printQuotation(c));
+  root.querySelectorAll('[data-pdf-quote]').forEach(b => b.onclick = () => run(() => downloadQuotePdf(c)));
   root.querySelectorAll('[data-gostage]').forEach(b => b.onclick = () => goStage(Number(b.dataset.gostage)));
   hydrateThumbs(root);
   if(mode !== 'client') return;
@@ -2536,7 +3575,7 @@ function goToRequestScreen(){
   state.showErrors = false;
   reqFormState = { orderType: null, urgency: null };
   $('configured-item-bar').innerHTML = `<span class="cb-label">Configured item:</span>${esc(panelShortSummary(panel, state.configuratorValues))}`;
-  ['f-fullname','f-company','f-phone','f-email','f-location','f-diagram','f-lead-value'].forEach(id => $(id).value = '');
+  ['f-fullname','f-company','f-phone','f-email','f-cc','f-location','f-diagram','f-lead-value'].forEach(id => $(id).value = '');
   const pr = state.role === 'sales' ? {} : (state.profile || {});
   $('f-fullname').value = pr.name || '';
   $('f-email').value = pr.email || '';
@@ -2558,6 +3597,10 @@ function reqWarn(msg){ $('req-warn-slot').innerHTML = `<div class="warn-banner">
 $('btn-submit-request').onclick = async () => {
   const fullName = $('f-fullname').value.trim(), phone = $('f-phone').value.trim(), email = $('f-email').value.trim();
   if(!fullName || !phone || !email){ reqWarn('Please provide at least your full name, phone number and email so an estimator can reach you.'); return; }
+  const ccRaw = ($('f-cc').value || '').split(/[\s,;]+/).map(x => x.trim().toLowerCase()).filter(Boolean);
+  const badCc = ccRaw.find(x => !EMAIL_RE.test(x));
+  if(badCc){ reqWarn(`“${badCc}” in “Copy others on the quotation” is not a valid email address.`); return; }
+  const ccEmails = [...new Set(ccRaw)].slice(0, 10);
   const f = $('f-diagram').files[0];
   let prepared = null;
   if(f){
@@ -2590,7 +3633,7 @@ $('btn-submit-request').onclick = async () => {
     createdAtMs: now, updatedAt: now,
     values: JSON.parse(JSON.stringify(state.configuratorValues)),
     contact: {
-      fullName, company: $('f-company').value.trim(), phone, email,
+      fullName, company: $('f-company').value.trim(), phone, email, ccEmails,
       location: $('f-location').value.trim(), orderType,
       urgency: reqFormState.urgency || 'Standard (2–3 weeks)',
       leadTime, leadTimeDays,
@@ -2775,7 +3818,7 @@ function renderSalesDetail(){
         ${clientStagePanelHTML(c, sel, 'view')}
         <section class="qgroup"><div class="qgroup-head"><h3>Configuration</h3></div><div class="summary-body">${rowsToHTML(specRows(panel, c.values), panel.name)}</div></section>
         <section class="qgroup"><div class="qgroup-head"><h3>Client &amp; project details</h3></div><div class="summary-body">
-          ${srowsHTML([['Full name', esc(c.contact.fullName)], ['Company', esc(c.contact.company || '—')], ['Phone', esc(c.contact.phone)], ['Email', esc(c.contact.email)], ['Location', esc(c.contact.location || '—')], ['Urgency', esc(c.contact.urgency)], ['NDA', esc(c.ndaStatus)]])}
+          ${srowsHTML([['Full name', esc(c.contact.fullName)], ['Company', esc(c.contact.company || '—')], ['Phone', esc(c.contact.phone)], ['Email', esc(c.contact.email)], ...((c.contact.ccEmails || []).length ? [['Copied on quotation', esc(c.contact.ccEmails.join(', '))]] : []), ['Location', esc(c.contact.location || '—')], ['Urgency', esc(c.contact.urgency)], ['NDA', esc(c.ndaStatus)]])}
         </div></section>
         <section class="qgroup"><div class="qgroup-head"><h3>Activity</h3></div><div class="qgroup-body">${activityHTML(c)}</div></section>
       </div>
@@ -2897,7 +3940,7 @@ $('btn-sim-call').onclick = () => {
   refreshAdminLookup();
 };
 function renderAdminEstimators(){
-  $('admin-estimators').innerHTML = ESTIMATORS.map(e =>
+  $('admin-estimators').innerHTML = activeEstimators().map(e =>
     `<div class="est-item"><div><div class="en">${esc(e.name)}</div><div class="esp">${esc(e.specialty)}</div></div>${workloadChip(openCountFor(e.id))}</div>`).join('');
 }
 function renderAdminQueueHealth(){
@@ -3061,7 +4104,7 @@ function renderEstimatorDetail(){
     <div class="detail-grid">
       <div>
         <section class="qgroup"><div class="qgroup-head"><h3>Client &amp; project details</h3></div><div class="summary-body">
-          ${srowsHTML([['Full name', esc(c.contact.fullName)], ['Company', esc(c.contact.company || '—')], ['Phone', esc(c.contact.phone)], ['Email', esc(c.contact.email)], ['Location', esc(c.contact.location || '—')]])}
+          ${srowsHTML([['Full name', esc(c.contact.fullName)], ['Company', esc(c.contact.company || '—')], ['Phone', esc(c.contact.phone)], ['Email', esc(c.contact.email)], ...((c.contact.ccEmails || []).length ? [['Copied on quotation', esc(c.contact.ccEmails.join(', '))]] : []), ['Location', esc(c.contact.location || '—')]])}
           ${c.onBehalfOf ? srowsHTML([['Entered by', esc(c.createdBy) + ' (sales, on behalf of client)']]) : ''}
         </div></section>
         <section class="qgroup"><div class="qgroup-head"><h3>Full technical specification</h3></div><div class="summary-body">${rowsToHTML(specRows(panel, c.values))}</div></section>
@@ -3080,7 +4123,7 @@ function renderEstimatorDetail(){
             <label class="flabel">Assign estimator</label>
             <select id="est-assign-select">
               <option value="">— Unassigned —</option>
-              ${ESTIMATORS.map(e => `<option value="${esc(e.id)}" ${c.assignedEstimatorId === e.id ? 'selected' : ''}>${esc(e.name)} — ${esc(e.specialty)}</option>`).join('')}
+              ${ESTIMATORS.filter(e => e.active !== false || e.id === c.assignedEstimatorId).map(e => `<option value="${esc(e.id)}" ${c.assignedEstimatorId === e.id ? 'selected' : ''}>${esc(e.name)} — ${esc(e.specialty)}</option>`).join('')}
             </select>
           </div>
           ${me ? `<button class="ghost small" id="btn-assign-me">Assign to me${c.status === 'Case Received' ? ' &amp; begin review' : ''}</button>` : ''}
@@ -3109,7 +4152,8 @@ function renderEstimatorDetail(){
             <div class="hint-text">PDF, Word or image, up to ${esc(KB(MAX_FILE_BYTES))}.</div>
           </div>
           <button class="primary" id="btn-issue-quote"${locked ? ' disabled' : ''}>${c.quoteAmount != null ? 'Re-issue quotation' : 'Issue quotation'}</button>
-          ${locked ? `<div class="hint-text">Locked — the client has accepted the price.</div>` : ''}
+          ${locked ? `<div class="hint-text">Locked — the client has accepted the price.</div>` : `<div class="hint-text">Issuing also e-mails the PDF quotation to the client (copying everyone on the request) and sends it on WhatsApp.</div>`}
+          ${deliveryBoxHTML(c)}
           <hr style="border:none;border-top:1px solid var(--line); margin:4px 0;">
           ${nextStage ? `<button class="ghost small" id="btn-advance-status">Mark as: ${esc(nextStage)}</button>` : `<div class="summary-empty">Case closed.</div>`}
         </div></section>
@@ -3143,16 +4187,35 @@ function renderEstimatorDetail(){
     const notes = $('est-quote-notes').value.trim();
     if(!(amt > 0)){ toast('Enter a quote amount greater than zero.'); return; }
     const rev = (c.quoteHistory || []).length + 1;
+    const qEntry = { id: uid8(), t: Date.now(), amount: amt, note: notes, by: state.profile.name, rev };
     const patch = { quoteAmount: amt, quoteNotes: notes, quoteRequested: false, quoteTerms: readTerms() };
     if(idx < STATUS_STAGES.indexOf('Quotation Issued')) patch.status = 'Quotation Issued';
     else if(c.status === 'Under Estimator Review') patch.status = 'Quotation Issued';
-    await DB.updateCase(c.caseNo, patch, {
-      quoteHistory: [{ id: uid8(), t: Date.now(), amount: amt, note: notes, by: state.profile.name, rev }],
-      timeline: [entry(rev === 1 ? `Quotation issued — ${fmtMoney(amt)}. Client notified by SMS and email (simulated).` : `Revised quotation issued — ${fmtMoney(amt)} (revision ${rev}). Client notified (simulated).`, { commercial: true })],
-    });
-    state.estDraft = null;
-    toast('Quotation issued — the client can see it now.');
+    const btn = $('btn-issue-quote'); btn.disabled = true; btn.textContent = 'Issuing and sending…';
+    state.sendingCase = c.caseNo;
+    try{
+      await DB.updateCase(c.caseNo, patch, {
+        quoteHistory: [qEntry],
+        timeline: [entry(rev === 1 ? `Quotation issued — ${fmtMoney(amt)}.` : `Revised quotation issued — ${fmtMoney(amt)} (revision ${rev}).`, { commercial: true })],
+      });
+      state.estDraft = null;
+      const issued = Object.assign({}, c, patch, { quoteHistory: (c.quoteHistory || []).concat([qEntry]) });
+      try{
+        const res = await sendQuoteOut(issued);
+        await DB.updateCase(c.caseNo, {}, [entry(deliverySummaryText(res), { commercial: true })]);
+        toast(deliveryToast(res));
+      }catch(e){
+        console.error(e);
+        toast('Quotation issued, but it could not be sent automatically: ' + friendlyError(e) + ' Use “Send now”, or download the PDF.');
+      }
+    } finally { state.sendingCase = null; refreshActive(); }
   });
+  const rs = $('btn-resend-quote');
+  if(rs) rs.onclick = () => run(async () => {
+    state.sendingCase = c.caseNo; renderEstimatorDetail();
+    try{ toast(deliveryToast(await sendQuoteOut(c))); } finally { state.sendingCase = null; refreshActive(); }
+  });
+  const pdfB = $('btn-pdf-quote'); if(pdfB) pdfB.onclick = () => run(() => downloadQuotePdf(c));
   const adv = $('btn-advance-status');
   if(adv) adv.onclick = () => run(async () => {
     await DB.updateCase(c.caseNo, { status: nextStage }, [entry(`Status updated to ${nextStage}.`)]);
